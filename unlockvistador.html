@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Welcome to unlockvistador</title>
+    <style>
+        .serbia {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body class = "body">
+    <h1>Welcome to the unlockwistador</h1> 
+
+    <svg class = "serbia" width="568" height="739">
+        <!--G : Banat-->
+    <polygon points="28,51,86,31,112,8,159,15,159,148,172,163,142,155,63,155,42,148" style="fill:lime;" 
+    onmouseout="mouseOutHandlerBanat()"
+    onmouseover="mouseOverHandlerBanat()"
+    onclick="clickHandlerBanat()" 
+    id = "BanatID"/>
+        <!--G : Backa -->
+    <polygon points="183,19,254,134,327,178,333,217,311,233,230,245,194,187,159,148,159,15" style="fill:yellow" 
+    onmouseout="mouseOutHandlerBacka()"
+    onmouseover="mouseOverHandlerBacka()"
+    onclick="clickHandlerBacka()" 
+    id = "BackaID"/>
+        <!--G: Treba da se dodaju ostali regioni koji su na mapi!-->
+    </svg> 
+</body>
+<script type="text/javascript">
+
+    function clickHandlerBanat() {
+        alert("BANAT");
+    }
+    function mouseOverHandlerBanat() {
+        document.getElementById("BanatID").style = "fill:red";
+    }
+    function mouseOutHandlerBanat() {
+        document.getElementById("BanatID").style = "fill:lime";
+    }
+    function clickHandlerBacka() {
+        alert("BACKA");
+    }
+    function mouseOverHandlerBacka() {
+        document.getElementById("BackaID").style = "fill:red";
+    }
+    function mouseOutHandlerBacka() {
+        document.getElementById("BackaID").style = "fill:yellow";
+    }
+</script>
+</html>
