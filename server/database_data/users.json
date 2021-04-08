@@ -1,0 +1,27 @@
+{
+	"_id": {
+		"$oid": "606f7ff056d684a2fd6331ee"
+	},
+	"username": "Gasa",
+	"name": "Gavrilo",
+	"lastname": "Jovanovic",
+	"email": "G.J@gmail.com",
+	"password": "treba zastititi",
+	"unlockedRegions": [
+		"Raska",
+		"Backa"
+	],
+	"admin": true
+}
+{
+	"_id": {
+		"$oid": "606f807f56d684a2fd6331ef"
+	},
+	"username": "Kaca",
+	"name": "Katarina",
+	"lastname": "Nikolic",
+	"email": "K.N@gmail.com",
+	"password": "treba zastititi",
+	"unlockedRegions": [],
+	"admin": false
+}

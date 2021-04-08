@@ -1,0 +1,24 @@
+{
+	"_id": {
+		"$oid": "606f821656d684a2fd6331f0"
+	},
+	"name": "Backa",
+	"facts": "Bačka je dobila ime po gradu Baču. Ovo je tipična slovenska imenska forma sa sufiksom „ka“, koju su kasnije usvojili i Nemci i Mađari.",
+	"locked": true
+}
+{
+	"_id": {
+		"$oid": "606f828756d684a2fd6331f1"
+	},
+	"name": "Raska",
+	"facts": "Samo ime Raška (lat. Rassia — Rasija) prvi put se pominje 1189. godine. Od tada Mlečani, Nemci i Mađari do 18. veka Srbiju često nazivaju Rascija (lat. Rascia), a shodno tome su i Srbe često nazivali Rašanima, odnosno Rascijanima (lat. Rasciani) ili Racima i slično.",
+	"locked": true
+}
+{
+	"_id": {
+		"$oid": "606f82f756d684a2fd6331f2"
+	},
+	"name": "Sumadija",
+	"facts": "Šumadija je geografska regija u Srbiji. Ime je dobila po šumama koje su nekada prekrivale najveći deo njene teritorije. Administrativno središte je Kragujevac, koji je ujedno i centar Šumadijskog okruga",
+	"locked": false
+}
