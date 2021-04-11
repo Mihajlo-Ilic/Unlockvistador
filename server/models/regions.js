@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const regionsShema = new mongoose.Schema({
+const regionsShema = mongoose.Schema({
     _id : mongoose.Schema.Types.ObjectId,
     name : {
         type : String,
@@ -20,5 +20,5 @@ const regionsShema = new mongoose.Schema({
 	}
 });
 
-const seriesModel = mongoose.model('Regions', regionsShema);
+const regionsModel = mongoose.model('Regions', regionsShema);
 module.exports = regionsModel;

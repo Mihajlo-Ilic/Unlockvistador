@@ -72,10 +72,26 @@
         <!--G: Treba da se dodaju ostali regioni koji su na mapi!-->
     </svg> 
 </body>
+<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 
+function sendGetReq(ime_oblasti) {
+        $.ajax(`http://localhost:3000/${ime_oblasti}`, {
+            method: "GET",
+            success: function (data) {
+                if(data.hasOwnProperty("poruka")) {
+                    alert('Uspeh ' + data.poruka)
+                }
+            },
+            error: function (xhr, status, error) {
+                var errorMessage = xhr.status + ': ' + xhr.statusText
+                alert('Error - ' + errorMessage);
+            }
+        });
+    }
+
     function clickHandlerBanat() {
-        alert("BANAT");
+        sendGetReq("Banat")
     }
     function mouseOverHandlerBanat() {
         document.getElementById("BanatID").style = "fill:red";
@@ -85,7 +101,7 @@
     }
 
     function clickHandlerBacka() {
-        alert("BACKA");
+        sendGetReq("Backa")
     }
     function mouseOverHandlerBacka() {
         document.getElementById("BackaID").style = "fill:red";
@@ -95,7 +111,7 @@
     }
 
     function clickHandlerSrem() {
-        alert("SREM");
+        sendGetReq("Srem")
     }
     function mouseOverHandlerSrem() {
         document.getElementById("SremID").style = "fill:red";
@@ -105,7 +121,7 @@
     }
 
     function clickHandlerBeograd() {
-        alert("BEOGRAD");
+        sendGetReq("Beograd")
     }
     function mouseOverHandlerBeograd() {
         document.getElementById("BeogradID").style = "fill:red";
@@ -115,7 +131,7 @@
     }
     
     function clickHandlerIstok() {
-        alert("ISTOCNA SRBIJA");
+        sendGetReq("Istok")
     }
     function mouseOverHandlerIstok() {
         document.getElementById("IstokID").style = "fill:red";
@@ -125,7 +141,7 @@
     }
 
     function clickHandlerSumadija() {
-        alert("SUMADIJA");
+        sendGetReq("Sumadija")
     }
     function mouseOverHandlerSumadija() {
         document.getElementById("SumadijaID").style = "fill:red";
@@ -135,7 +151,7 @@
     }
 
     function clickHandlerNisava() {
-        alert("NIS");
+        sendGetReq("Nis")
     }
     function mouseOverHandlerNisava() {
         document.getElementById("NisavaID").style = "fill:red";
@@ -145,7 +161,7 @@
     }
 
     function clickHandlerRaska() {
-        alert("RASKA");
+        sendGetReq("Raska")
     }
     function mouseOverHandlerRaska() {
         document.getElementById("RaskaID").style = "fill:red";
@@ -155,7 +171,7 @@
     }
 
     function clickHandlerKosovo() {
-        alert("KOSOVO I METOHIJA");
+        sendGetReq("Kosovo")
     }
     function mouseOverHandlerKosovo() {
         document.getElementById("KosovoID").style = "fill:red";
