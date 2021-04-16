@@ -11,7 +11,7 @@ const regionsShema = mongoose.Schema({
         require: true
     },
     facts: {
-		type: String,
+		type: Array,
 		require: true
 	},
 	locked: {

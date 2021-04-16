@@ -79,8 +79,8 @@ function sendGetReq(ime_oblasti) {
         $.ajax(`http://localhost:3000/${ime_oblasti}`, {
             method: "GET",
             success: function (data) {
-                if(data.hasOwnProperty("poruka")) {
-                    alert('Uspeh ' + data.poruka)
+                if(data.hasOwnProperty("message")) {
+                    alert('Uspeh ' + data.message)
                 }
             },
             error: function (xhr, status, error) {
