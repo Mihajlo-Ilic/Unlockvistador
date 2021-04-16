@@ -11,6 +11,13 @@ mongoose.connect("mongodb://127.0.0.1:27017/Unlockvistador", {
     useUnifiedTopology: true
 });
 
+mongoose.connection.once('open', function () {
+  console.log('Successful connection to mongoose!');
+});
+
+mongoose.connection.on('error', (error) => {
+  console.log('Error: ', error);
+});
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -37,7 +44,7 @@ app.use(function(req, res, next) {
 })
 
 app.use(function(error,req,res,next){
-    res.status(error.status|| 500).json({greska: {poruka:error.message}});
+    res.status(error.status || 500).json({greska: {poruka:error.message}});
 })
 
 module.exports = app

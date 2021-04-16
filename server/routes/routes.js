@@ -3,10 +3,10 @@ const router = express.Router();
 
 const controllerUser = require('../controllers/users');
 const controllerRegions = require('../controllers/regions');
+const upload = require('../upload/uploadImage')
 
-//Funkcija je zakomentarisana jer metod upload dize gresku
-
-//router.post('/newUser', upload.single('image'), controllerUser.addNewUser);
+router.post('/newUser', upload.single('image'), controllerUser.addNewUser);
+router.post('/signIn', controllerUser.findUser);
 router.post('/addRegionForUser', controllerUser.addRegionForUser);
 
 router.get('/:region_name', controllerRegions.getRegionFacts);

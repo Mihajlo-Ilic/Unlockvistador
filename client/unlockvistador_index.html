@@ -20,10 +20,13 @@
 </head>
 <body class = "body">
     <h1>Welcome to unlockvistador!</h1> 
-    <button type="submit" onclick="openForm(`registration`)">Registracija</button>
+    <button type="submit" onclick="closeForm(`login`); openForm(`registration`)">Registracija</button>
     <div class="form-popup" id="formRegister">
         <form action="" class="form-container">
             <h3>Registrujte se:</h3>
+            <label for="email"><b>E-mail:*</b></label>
+            <input type="text" name="email" placeholder="" required>
+            <br>
             <label for="username"><b>Korisničko ime*:</b></label>
             <input type="text" name="username" placeholder="" required>
             <br>
@@ -42,7 +45,7 @@
         </form>
     </div>
 
-    <button type="submit" onclick="openForm(`login`)">Prijava</button>
+    <button type="submit" onclick="closeForm(`registration`); openForm(`login`)">Prijava</button>
     <div class="form-popup" id="formLogin">
         <form action="" class="form-container">
             <h3>Prijavite se:</h3>

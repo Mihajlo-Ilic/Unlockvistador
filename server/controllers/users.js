@@ -9,7 +9,7 @@ let addNewUser = async(req, res, next) => {
         if (req.file) {
             image = req.file.filename;
         } else {
-            image = 'NoImage.jpg';
+            image = '../../client/pictures/defaultIcon.png';
         }
         const newUser = {
             _id: new mongoose.Types.ObjectId,
@@ -18,6 +18,7 @@ let addNewUser = async(req, res, next) => {
             lastname: req.body.lastname,
             email: req.body.email,
             password: req.body.password,
+            image: image,
             unlockedRegions: [],
             admin: false
         };
@@ -43,6 +44,49 @@ let addNewUser = async(req, res, next) => {
         next(error);
     }
 }
+
+let findUser = async(req, res, next) => {
+    try {
+        const user = await User.findOne({
+            email: req.body.email
+        });
+
+        if(user) {
+            if (bcrypt.compareSync(req.body.password, user.password)) {
+                const payload = {
+                    _id: user._id,
+                    email: user.email
+                };
+
+                let token = jwt.sign(payload, 'token', {
+                    expiresIn: 1440
+                });
+
+                res.json({
+                    name: user.name,
+                    lastname: user.lastname,
+                    email: user.email,
+                    username: user.username,
+                    image: user.image,
+                    unlockedRegions: user.unlockedRegions
+                }).status(200);
+
+            } else {
+                res.status(404).json({
+                    error: "User does not exist"
+                });
+            }
+        } else {
+            res.status(404).json({
+                error: "User does not exist"
+            });
+        }
+
+    } catch (error) {
+        next(error);
+    }
+}
+
 
 let addRegionForUser = async(req, res, next) => {
     try {
@@ -83,5 +127,6 @@ let addRegionForUser = async(req, res, next) => {
 
 module.exports = {
     addNewUser,
-    addRegionForUser
+    addRegionForUser,
+    findUser
 }
