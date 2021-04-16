@@ -9,10 +9,54 @@
             margin-left: auto;
             margin-right: auto;
         }
+
+        .form-popup {
+            display: none;
+            position: fixed;
+            border: 3px solid #f1f1f1;
+            z-index: 9;
+        }
     </style>
 </head>
 <body class = "body">
-    <h1>Welcome to the unlockwistador</h1> 
+    <h1>Welcome to unlockvistador!</h1> 
+    <button type="submit" onclick="openForm(`registration`)">Registracija</button>
+    <div class="form-popup" id="formRegister">
+        <form action="" class="form-container">
+            <h3>Registrujte se:</h3>
+            <label for="username"><b>Korisničko ime*:</b></label>
+            <input type="text" name="username" placeholder="" required>
+            <br>
+            <label for="password"><b>Lozinka:*</b></label>
+            <input type="text" name="password" placeholder="" required>
+            <br>
+            <label for="first_name"><b>Ime:</b></label>
+            <input type="text" name="first_name" placeholder="" >
+            <br>
+            <label for="last_name"><b>Prezime:</b></label>
+            <input type="text" name="last_name" placeholder="" >
+            <br>
+            <button type="submit">Registruj se</button>
+            <button type="reset">Poništi</button>
+            <button type="submit" onclick="closeForm(`registration`)">Zatvori formular</button>
+        </form>
+    </div>
+
+    <button type="submit" onclick="openForm(`login`)">Prijava</button>
+    <div class="form-popup" id="formLogin">
+        <form action="" class="form-container">
+            <h3>Prijavite se:</h3>
+            <label for="username"><b>Korisničko ime*:</b></label>
+            <input type="text" name="username" placeholder="" required>
+            <br>
+            <label for="password"><b>Lozinka:*</b></label>
+            <input type="text" name="password" placeholder="" required>
+            <br>
+            <button type="submit">Prijavi se</button>
+            <button type="reset">Poništi unos</button>
+            <button type="submit" onclick="closeForm(`login`)">Zatvori formular</button>
+        </form>
+    </div>
 
     <svg class = "serbia" width="568" height="739">
         <!--G : Backa-->
@@ -88,6 +132,20 @@ function sendGetReq(ime_oblasti) {
                 alert('Error - ' + errorMessage);
             }
         });
+    }
+
+    function openForm(form_name) {
+        if(form_name == "registration")
+            document.getElementById("formRegister").style.display = "block"
+        else if(form_name == "login")
+            document.getElementById("formLogin").style.display = "block"
+    }
+
+    function closeForm(form_name) {
+        if(form_name == "registration")
+            document.getElementById("formRegister").style.display = "none"
+        else if(form_name == "login")
+            document.getElementById("formLogin").style.display = "none"
     }
 
     function clickHandlerBanat() {
