@@ -22,22 +22,22 @@
     <h1>Welcome to unlockvistador!</h1> 
     <button type="submit" onclick="closeForm(`login`); openForm(`registration`)">Registracija</button>
     <div class="form-popup" id="formRegister">
-        <form action="" class="form-container">
+        <form id="formReg" action="" class="form-container">
             <h3>Registrujte se:</h3>
             <label for="email"><b>E-mail:*</b></label>
-            <input type="text" name="email" placeholder="" required>
+            <input id="emailReg" type="text" name="email" placeholder="" required>
             <br>
             <label for="username"><b>Korisničko ime*:</b></label>
-            <input type="text" name="username" placeholder="" required>
+            <input id="usernameReg" type="text" name="username" placeholder="" required>
             <br>
             <label for="password"><b>Lozinka:*</b></label>
-            <input type="text" name="password" placeholder="" required>
+            <input id="passowordReg" type="text" name="password" placeholder="" required>
             <br>
             <label for="first_name"><b>Ime:</b></label>
-            <input type="text" name="first_name" placeholder="" >
+            <input id="nameReg" type="text" name="first_name" placeholder="" >
             <br>
             <label for="last_name"><b>Prezime:</b></label>
-            <input type="text" name="last_name" placeholder="" >
+            <input id="lastNameReg" type="text" name="last_name" placeholder="" >
             <br>
             <button type="submit">Registruj se</button>
             <button type="reset">Poništi</button>
@@ -47,13 +47,13 @@
 
     <button type="submit" onclick="closeForm(`registration`); openForm(`login`)">Prijava</button>
     <div class="form-popup" id="formLogin">
-        <form action="" class="form-container">
+        <form id="formLog" action="" class="form-container">
             <h3>Prijavite se:</h3>
-            <label for="username"><b>Korisničko ime*:</b></label>
-            <input type="text" name="username" placeholder="" required>
+            <label for="email"><b>Mejl*:</b></label>
+            <input id="emailLog" type="text" name="email" placeholder="" required>
             <br>
             <label for="password"><b>Lozinka:*</b></label>
-            <input type="text" name="password" placeholder="" required>
+            <input id="passwordLog" type="text" name="password" placeholder="" required>
             <br>
             <button type="submit">Prijavi se</button>
             <button type="reset">Poništi unos</button>
@@ -122,7 +122,7 @@
 <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 
-function sendGetReq(ime_oblasti) {
+    function sendGetReq(ime_oblasti) {
         $.ajax(`http://localhost:3000/${ime_oblasti}`, {
             method: "GET",
             success: function (data) {
@@ -136,6 +136,49 @@ function sendGetReq(ime_oblasti) {
             }
         });
     }
+
+    $("#formReg").submit(function(){
+        let email = $("#emailReg").val();
+        let username = $("#usernameReg").val();
+        let password = $("#passwordReg").val();
+        let name = $("#nameReg").val();
+        let lastname = $("#lastNameReg").val();
+        $.ajax(`http://localhost:3000/newUser`,{
+            method: "POST",
+            data: JSON.stringify({
+                username, name, lastname, email, password
+            }),
+            contentType: "application/json",
+            success: function(data) {
+                alert("USPEH" + data.message);
+            },
+            error: function(xhr, status, error) {
+                var errorMessage = xhr.status + ': ' + xhr.statusText
+                alert('Error - ' + errorMessage);
+            }
+        });
+    });
+
+    $("#formLog").submit(function(){
+        let email = $("#emailLog").val();
+        let password = $("#passwordLog").val();
+        $.ajax(`http://localhost:3000/signIn`,{
+            data: JSON.stringify({
+                email : email, 
+                password : password
+            }),
+            method: "POST",
+            contentType: "application/json",
+            success: function(data) {
+                alert("LOG IN");
+            },
+            error: function(xhr, status, error) {
+                var errorMessage = xhr.status + ': ' + xhr.statusText
+                alert("Lozinka ili mejl Vam nije korektno");
+            }
+        });
+    });
+
 
     function openForm(form_name) {
         if(form_name == "registration")
