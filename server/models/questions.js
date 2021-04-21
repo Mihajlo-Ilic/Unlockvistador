@@ -14,7 +14,32 @@ const questionsSchema = mongoose.Schema({
     answer: {
         type: String,
         required: true
-    }
+    },
+    false_answer1: {
+        type: String,
+        required: true
+    },
+    false_answer2: {
+        type: String,
+        required: true
+    },
+    false_answer3: {
+        type: String,
+        required: true
+    },
+    false_answer4: {
+        type: String,
+        required: true
+    },
+    false_answer5: {
+        type: String,
+        required: true
+    },
+    false_answer6: {
+        type: String,
+        required: true
+    },
+
 });
 
 const questionsModel = mongoose.model("Questions", questionsSchema)

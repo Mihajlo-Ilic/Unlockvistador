@@ -1,13 +1,13 @@
 const User = require('../models/users');
 const Regions = require('../models/regions');
-const Questions = require('../models/questions')
+const Questions = require('../models/questions');
+const Comments = require('../models/comments');
 const mongoose = require('mongoose');
 const e = require('express');
 
 
 module.exports.getRegionFacts = async(req, res, next) => {
     try {
-        
 		const regionName = req.params.region_name;
         
         let regions = await Regions.find({name : regionName}).exec()

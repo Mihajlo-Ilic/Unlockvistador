@@ -6,7 +6,13 @@
     "$oid": "606f821656d684a2fd6331f0"
   },
   "text": "Koja reka predstavlja jugozapadnu granicu Bačke?",
-  "answer": "Dunav"
+  "answer": "Dunav",
+  "false_answer1": "Tisa",
+  "false_answer2": "Drina",
+  "false_answer3": "Drava",
+  "false_answer4": "Timok",
+  "false_answer5": "Gorice",
+  "false_answer6": "Zapadna Morava"
 },{
   "_id": {
     "$oid": "607956f059b8a11ef5e904dd"
@@ -14,6 +20,12 @@
   "region": {
     "$oid": "606f828756d684a2fd6331f1"
   },
-  "text": "Ko je najpoznatiji srpski vladar iz ove regije?",
-  "answer": "Stefan Nemanja"
+  "text": "Koji vladar je podigao bunu druge polovine 12. veka protiv Vizantije",
+  "answer": "Stefan Nemanja",
+  "false_answer1": "Dusan Silni",
+  "false_answer2": "Milutin",
+  "false_answer3": "Stefan Prvovencani",
+  "false_answer4": "Caslav",
+  "false_answer5": "Vukan",
+  "false_answer6": "Tihomir Zavidic"
 }]
