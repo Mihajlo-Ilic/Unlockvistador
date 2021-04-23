@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const commentsSchema = mongoose.Schema({
+const commentSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     region: {
         type: mongoose.Schema.Types.ObjectId,
