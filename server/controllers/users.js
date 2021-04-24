@@ -46,6 +46,7 @@ let addNewUser = async(req, res, next) => {
 }
 
 let findUser = async(req, res, next) => {
+    console.log("funkcija findUser")
     try {
         const user = await User.findOne({
             email: req.body.email

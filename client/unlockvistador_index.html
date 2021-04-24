@@ -129,6 +129,9 @@
                 if(data.hasOwnProperty("message")) {
                     alert('Uspeh ' + data.message)
                 }
+                else if(data.hasOwnProperty("text")) {
+                    alert(data.text + "\n" + data.answer)
+                }
             },
             error: function (xhr, status, error) {
                 var errorMessage = xhr.status + ': ' + xhr.statusText

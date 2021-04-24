@@ -9,6 +9,6 @@ router.post('/:newUser', upload.single('image'), controllerUser.addNewUser);
 router.post('/:signIn', controllerUser.findUser); 
 router.post('/:addRegionForUser', controllerUser.addRegionForUser);
 
-router.get('/:region_name', controllerRegions.getRegionFacts);
+router.get('/:region_name', controllerRegions.getRegion);
 
 module.exports = router;
