@@ -1,0 +1,64 @@
+mat-card{
+    max-width: 50rem;
+    margin-left: 400px;
+    margin-top: 10px;
+    text-align: left;
+    background-color: #A9A9A9;
+ 
+}
+mat-card-title{
+    padding-left: 10%;
+    color: black(105, 71, 253); 
+    background-color: cornsilk;
+}
+mat-card-content{
+    padding-top: 20px;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #FFFFF0;
+    color:  black;
+}
+mat-card-actions{
+    margin-left: 35%;
+
+}
+.gender{
+    margin-left: 7rem;
+}
+.trainerOrClient{
+    margin-left: 13.5rem;
+}
+.lastName{
+    margin-left: 10.5rem;
+}
+.password2{
+    margin-left: 8.6rem;   
+}
+.form-group{
+    color: rgb(126, 156, 245);
+}
+
+button{
+    margin: 10px;
+}
+p{
+    color: rgb(207, 134, 134);
+}
+.username{
+    margin-left: 10rem;
+}
+.genderFemale{
+    margin-left: 20px;
+}
+.trainer{
+    margin-left: 20px;
+}
+mat-accordion {
+    background-color: #FFFFF0;
+}
+
+mat-accordion button{
+    background-color:cornsilk ;
+}

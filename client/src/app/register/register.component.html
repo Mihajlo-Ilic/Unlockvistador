@@ -1,0 +1,98 @@
+<mat-card class="example-card">
+    <form [formGroup]="checkForm" (ngSubmit)="submitForm(checkForm.value)" class="card-body">
+        <mat-card-title>Napravite novi nalog</mat-card-title>
+        <mat-card-content>
+            <div class="form-row">
+                <mat-form-field class='create-input' appearance="">
+                    <mat-label class="firstName"> Ime </mat-label>
+                    <input matInput type="text" name="firstName" formControlName="firstName">
+                    <mat-error *ngIf="firstName.errors?.required">Ime je obavezno.</mat-error>
+                    <!--proveri sta se desava sa incorrectName !!!-->
+
+                    <mat-error *ngIf="firstName.errors?.incorrectName"> Ime nije ispravno.</mat-error>
+
+                </mat-form-field>
+
+                <mat-form-field class='create-input lastName' appearance="">
+
+                    <mat-label> Prezime </mat-label>
+                    <input matInput type="text" name="lastName" formControlName="lastName">
+                    <mat-error *ngIf="lastName.errors?.required">Prezime je obavezno.</mat-error>
+                    <!--proveri sta se desava sa incorrectName !!!-->
+                    <mat-error *ngIf="lastName.errors?.incorrectName">Prezime nije ispravno.</mat-error>
+
+                </mat-form-field>
+            </div>
+
+            <br>/
+
+            <hr>
+            <div>
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="pat@example.com" [formControl]="email" required>
+                    <mat-error *ngIf="email.errors?.required">Email je obavezan. </mat-error>
+                    <mat-error *ngIf="email.errors?.email">Email nije ispravan. </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class='create-input username' appearance="">
+                    <mat-label> Korisničko ime </mat-label>
+                    <input matInput type="text" name="username" formControlName="username">
+                </mat-form-field>
+            </div>
+            <div class="passwordDiv">
+                <mat-form-field class='create-input'>
+                    <mat-label class="password"> Šifra </mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" name="password" formControlName="password">
+                    <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+                </mat-form-field>
+
+                <mat-form-field class='create-input password2'>
+                    <mat-label> Ponoviti šifru </mat-label>
+                    <input matInput [type]="hide1 ? 'password' : 'text'" name="password" formControlName="password2">
+
+                    <mat-icon matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide1">
+                        {{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+
+                </mat-form-field>
+            </div>
+            <br>
+            <hr>
+            <div>
+                <mat-accordion class="example-headers-align" multi style="width: 30%;">
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Dodajte fotografiju
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                <mat-icon style="margin-left: 70%;">account_circle</mat-icon>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+            
+                            <div>            
+                            <input type ="file" style="display: none" (change)="onFileSelected($event)" #fileInput>
+                            <button type="button" (click)="fileInput.click()" mat-raised-button>izaberite fajl</button>
+                            
+                            <button type="button" (click)="onUpload()" mat-raised-button>potvrdite</button>
+                            </div>
+                    </mat-expansion-panel>
+            
+                </mat-accordion>
+            
+            
+            </div>
+            <hr>
+            <mat-card-actions>
+                <button type="submit" mat-raised-button [disabled]="!checkForm.valid"> Prosledi
+                </button>
+                <button mat-flat-button [routerLink]="['/login']"> Odustani </button>
+            </mat-card-actions>
+        </mat-card-content>
+    </form>
+</mat-card>
