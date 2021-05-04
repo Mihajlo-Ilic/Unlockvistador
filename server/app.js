@@ -3,8 +3,8 @@ const app = express()
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
 
-const routes = require("./routes/routes")
-
+const routerRegions = require("./routes/regions")
+const routerUsers = require("./routes/users")
 
 mongoose.connect("mongodb://127.0.0.1:27017/Unlockvistador", {
     useNewUrlParser: true,
@@ -34,7 +34,8 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use('/', routes)
+app.use('/', routerRegions);
+app.use('/users', routerUsers);
 
 app.use(function(req, res, next) {
     const error = new Error("Zahtev nije podrzan od servera")
