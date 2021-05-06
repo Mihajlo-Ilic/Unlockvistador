@@ -5,7 +5,7 @@ const Comments = require('../models/comments');
 const mongoose = require('mongoose');
 const e = require('express');
 
-
+// this module is starting a test also
 module.exports.getRegion = async (req, res, next) => {
     try {
         const regionName = req.params.region_name;
@@ -63,6 +63,36 @@ module.exports.getRegion = async (req, res, next) => {
     }
 }
 
+// if the test is completed then we are unlocking the region for user
+// patch request
+module.exports.unlockRegion = async(req,res,next) => {
+    try {
+        const regionName = req.params.region_name;
+        let regions = await Regions.find({name : regionName}).exec()
+        if(regions.length === 0){
+            res.status(404).json("Nema regiona sa imenom " + regionName)
+            return
+        } else {
+            let region = regions[0];
+            let id = region._id;
+            updateOptions["locked"] = true;
+            Regions.updateOne(
+                {_id : id },
+                { $set : updateOptions },
+                function(err,raw) {
+                    if(err) {
+                        return res.status(500).json({message:err})
+                    }
+                    res.status(200).json({message : "The region is unlocked"});
+                }
+            );
+        }   
+    } catch (error) {
+        console.log(error)
+        next(error)
+    }
+}
+
 module.exports.getRegionFacts = async(req, res, next) => {
     try {
 		const regionName = req.params.region_name;
@@ -81,7 +111,9 @@ module.exports.getRegionFacts = async(req, res, next) => {
                 //i pitanje vratiti kao msg
             }
             else {
-                msg = region.facts[0]
+                let numOfFacts = region.facts.lenght();
+                let randomNum = Math.floor(numOfFacts * Math.random())
+                msg = region.facts[randomNum]
             }
             res.json({message : msg}).status(200);
         }
@@ -122,4 +154,52 @@ module.exports.getQuestion = async(req, res, next) => {
         console.log(error.message)
         next(error)
     }    
+}
+// G : this module is made for adding question in database from client
+module.exports.inputQuestion = async(req,res,next) => {
+    try {
+        let loggedIn = req.body.loggedIn;
+        let admin = req.body.admin;
+        let text = req.body.text;
+        let answer = req.body.answer;
+        let false_answer1 = req.body.false_answer1;
+        let false_answer2 = req.body.false_answer2;
+        let false_answer3 = req.body.false_answer3;
+        let false_answer4 = req.body.false_answer4;
+        let false_answer5 = req.body.false_answer5;
+        let false_answer6 = req.body.false_answer6;
+        let regionId = await this.getRegionId(regionName);
+        if(regionId === -1) {
+            res.status(404).json("Nije pronadjen ID regiona s tim imenom")
+        } else {
+            const newQuestion = {
+                _id : new mongoose.Types.ObjectId,
+                region : regionId,
+                text : text,
+                answer : answer,
+                false_answer1 : false_answer1,
+                false_answer2 : false_answer2,
+                false_answer3 : false_answer3,
+                false_answer4 : false_answer4,
+                false_answer5 : false_answer5,
+                false_answer6 : false_answer6,
+            }
+            if(admin == True) {
+                Questions.create(newQuestion)
+                .then(user => {
+                    res.status(200).json({poruka : 'Added question!'});
+                })
+                .catch(err => {
+                    res.send('error: ' + err);
+                    console.log(err.message)
+                });
+            } else {
+                res.status(409).json({error: "This question is not beeing added by admin"});
+            }
+        }
+
+    } catch(error) {
+        console.log(error.message)
+        next(error)        
+    }
 }
