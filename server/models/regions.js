@@ -7,8 +7,8 @@ const regionsShema = mongoose.Schema({
         require : true
     },
     image: {
-        type: String,
-        require: true
+        type: Array,
+        require: false
     },
     facts: {
 		type: Array,
@@ -17,7 +17,7 @@ const regionsShema = mongoose.Schema({
 	locked: {
 		type: Boolean,
 		require: true
-	}
+	},
 });
 
 const regionsModel = mongoose.model('Regions', regionsShema);

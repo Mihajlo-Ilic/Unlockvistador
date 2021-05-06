@@ -109,13 +109,18 @@ module.exports.getRegionFacts = async(req, res, next) => {
                 msg = "Nemate pristup regionu!"
                 //ovde pozvati asinhroni zahtev ka kolekciji questions da se nadje pitanje za region
                 //i pitanje vratiti kao msg
+                res.json({message : msg}).status(200);
             }
             else {
+                // we are getting random fact and a picture
                 let numOfFacts = region.facts.lenght();
                 let randomNum = Math.floor(numOfFacts * Math.random())
-                msg = region.facts[randomNum]
+                msg = region.facts[randomNum];
+                let numOfPictures = region.image.length();
+                let randomNum = Math.floor(numOfPictures * Math.random())
+                msg2 = region.image[randomNum]
+                res.json({fact : msg, picture : msg2}).status(200);
             }
-            res.json({message : msg}).status(200);
         }
         
     } catch (error) {
