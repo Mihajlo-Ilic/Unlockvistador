@@ -5,7 +5,17 @@ const Comments = require('../models/comments');
 const mongoose = require('mongoose');
 const e = require('express');
 
+
+async function getRegionId(regionName) {
+    let regions = await Regions.find({name: regionName}).exec()
+    if (regions.length === 0) {
+        return -1
+    }
+    return regions[0]._id;
+}
+
 // this module is starting a test also
+
 module.exports.getRegion = async (req, res, next) => {
     try {
         const regionName = req.params.region_name;
@@ -52,7 +62,17 @@ module.exports.getRegion = async (req, res, next) => {
 
             }
             else {
-                res.json({ message : region.facts[0] }).status(200)
+                let comments = await Comments.find({region : region._id}).exec()
+                let comms = []
+                for(i = 0; i < comments.length; i++) {
+                    let usr = await User.find({_id : comments[i].user})
+                    let username = "Nepoznat korisnik"
+                    if(usr.length > 0) {
+                        username = usr[0].username;
+                    }
+                    comms.push(username + ":" + comments[i].comment);
+                }
+                res.json({ facts : region.facts, comments: comms  }).status(200)
             }
 
         }
@@ -61,6 +81,38 @@ module.exports.getRegion = async (req, res, next) => {
         console.log(error)
         next(error)
     }
+}
+
+module.exports.addComment = async(req, res, next) => {
+    console.log("Primljen komentar " + req.body.comment + "za oblast " + req.body.regionName)
+    //M: posto nije jos uvek uradjeno logovanje svi komentari ce biti od gase
+    try {
+        let comment = req.body.comment;
+        let regionName = req.body.regionName;
+
+        let regionId = await getRegionId(regionName)
+        if (regionId === -1) {
+            console.log("Region not found")
+            return res.json({error: "Region not found!"}).status(500)
+        }
+
+        const newComment = {
+            _id: new mongoose.Types.ObjectId,
+            region: regionId,
+            user: mongoose.Types.ObjectId("606f7ff056d684a2fd6331ee"),
+            comment: comment
+        }
+
+        Comments.create(newComment).
+        then(comment => {res.status(200).json({msg: "dodat komentar" + comment.comment})})
+            .catch(err => {
+                res.send('error' + err);
+            })
+    }
+    catch (error) {
+        next(error)
+    }
+
 }
 
 // if the test is completed then we are unlocking the region for user
@@ -117,7 +169,7 @@ module.exports.getRegionFacts = async(req, res, next) => {
                 let randomNum = Math.floor(numOfFacts * Math.random())
                 msg = region.facts[randomNum];
                 let numOfPictures = region.image.length();
-                let randomNum = Math.floor(numOfPictures * Math.random())
+                randomNum = Math.floor(numOfPictures * Math.random())
                 msg2 = region.image[randomNum]
                 res.json({fact : msg, picture : msg2}).status(200);
             }
@@ -129,13 +181,6 @@ module.exports.getRegionFacts = async(req, res, next) => {
     }
 }
 
-module.exports.getRegionId = async(regionName) => {
-    let regions = await Regions.find({name: regionName}).exec()
-    if (regions.length === 0) {
-        return -1
-    }
-    return regions[0]._id;
-}
 
 module.exports.getQuestion = async(req, res, next) => {
     try {
