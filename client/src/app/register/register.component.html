@@ -2,29 +2,19 @@
     <form [formGroup]="checkForm" (ngSubmit)="submitForm(checkForm.value)" class="card-body">
         <mat-card-title>Napravite novi nalog</mat-card-title>
         <mat-card-content>
-            <div class="form-row">
-                <mat-form-field class='create-input' appearance="">
+            <div>
+                <mat-form-field class='create-input'>
                     <mat-label class="firstName"> Ime </mat-label>
                     <input matInput type="text" name="firstName" formControlName="firstName">
                     <mat-error *ngIf="firstName.errors?.required">Ime je obavezno.</mat-error>
-                    <!--proveri sta se desava sa incorrectName !!!-->
-
-                    <mat-error *ngIf="firstName.errors?.incorrectName"> Ime nije ispravno.</mat-error>
-
                 </mat-form-field>
 
-                <mat-form-field class='create-input lastName' appearance="">
-
+                <mat-form-field class='create-input lastName'>
                     <mat-label> Prezime </mat-label>
                     <input matInput type="text" name="lastName" formControlName="lastName">
                     <mat-error *ngIf="lastName.errors?.required">Prezime je obavezno.</mat-error>
-                    <!--proveri sta se desava sa incorrectName !!!-->
-                    <mat-error *ngIf="lastName.errors?.incorrectName">Prezime nije ispravno.</mat-error>
-
                 </mat-form-field>
             </div>
-
-            <br>/
 
             <hr>
             <div>
@@ -47,18 +37,14 @@
                     <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                         [attr.aria-pressed]="hide">
                         {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-
                 </mat-form-field>
 
                 <mat-form-field class='create-input password2'>
                     <mat-label> Ponoviti šifru </mat-label>
                     <input matInput [type]="hide1 ? 'password' : 'text'" name="password" formControlName="password2">
-
                     <mat-icon matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'"
                         [attr.aria-pressed]="hide1">
                         {{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
-
-
                 </mat-form-field>
             </div>
             <br>
@@ -82,10 +68,8 @@
                             <button type="button" (click)="onUpload()" mat-raised-button>potvrdite</button>
                             </div>
                     </mat-expansion-panel>
-            
                 </mat-accordion>
-            
-            
+
             </div>
             <hr>
             <mat-card-actions>

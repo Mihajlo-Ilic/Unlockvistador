@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const session = require('express-session')
 const bcrypt = require("bcrypt");
 
-let addNewUser = async(req, res, next) => {
+module.exports.addNewUser = async(req, res, next) => {
     try {
         let image = '';
         if (req.file) {
@@ -46,7 +46,7 @@ let addNewUser = async(req, res, next) => {
     }
 }
 
-let authUser = async(req, res, next) => {
+module.exports.authUser = async(req, res, next) => {
     try {
         let email = req.body.email;
         let pswd = req.body.password
@@ -80,7 +80,7 @@ let authUser = async(req, res, next) => {
     }
 }
 
-let findUser = async(req, res, next) => {
+module.exports.findUser = async(req, res, next) => {
     console.log("funkcija findUser")
     try {
         const user = await User.findOne({
@@ -125,7 +125,7 @@ let findUser = async(req, res, next) => {
 
 
 
-let addRegionForUser = async(req, res, next) => {
+module.exports.addRegionForUser = async(req, res, next) => {
     try {
         const email = req.body.email;
         const user = await User.findOne({
@@ -162,9 +162,3 @@ let addRegionForUser = async(req, res, next) => {
     }
 }
 
-module.exports = {
-    addNewUser,
-    addRegionForUser,
-    findUser,
-    authUser
-}

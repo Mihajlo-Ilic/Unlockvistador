@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { JwtInterceptor } from './auth/jwt.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -29,16 +30,17 @@ import { RegisterInfoComponent } from './register-info/register-info.component';
   ],
   imports: [
     BrowserModule,
-    MaterialModule,
-    MatTableModule,
-    MatSortModule,
     MatCardModule,
     MatPaginatorModule,
     MatButtonModule,
-    AppRoutingModule,
+    MatTableModule,
+    MatSortModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    MaterialModule
   ],
   providers: [
     {

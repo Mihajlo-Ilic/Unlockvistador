@@ -1,64 +1,35 @@
-mat-card{
-    max-width: 50rem;
-    margin-left: 400px;
-    margin-top: 10px;
-    text-align: left;
-    background-color: #A9A9A9;
- 
-}
-mat-card-title{
-    padding-left: 10%;
-    color: black(105, 71, 253); 
-    background-color: cornsilk;
-}
-mat-card-content{
-    padding-top: 20px;
-    padding-left: 10%;
-    padding-right: 10%;
-    margin-left: 10px;
-    margin-right: 10px;
-    background-color: #FFFFF0;
-    color:  black;
-}
-mat-card-actions{
-    margin-left: 35%;
-
-}
-.gender{
-    margin-left: 7rem;
-}
-.trainerOrClient{
-    margin-left: 13.5rem;
-}
-.lastName{
-    margin-left: 10.5rem;
-}
-.password2{
-    margin-left: 8.6rem;   
-}
-.form-group{
-    color: rgb(126, 156, 245);
+form {
+    width: 700px;
+    height: 700px;
+    border-color: whitesmoke;
+    border-style: outset;
+    border-radius: 20px;
+    border-width: 3px;
+    box-shadow: 2px 5px black;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -300px;
+    text-align: center;
+    font-family:  "Goudy Old Style", sans-serif; 
 }
 
-button{
-    margin: 10px;
+mat-card-title {
+    font-size: 50px;
 }
-p{
-    color: rgb(207, 134, 134);
+mat-form-field {
+    font-size: 20px;
+    text-align: center;
+    border-width: 3px;
+    border-color: black;
 }
-.username{
-    margin-left: 10rem;
+mat-card-actions {
+    
+    text-align: center;
+    top: 30%;
 }
-.genderFemale{
-    margin-left: 20px;
-}
-.trainer{
-    margin-left: 20px;
-}
-mat-accordion {
-    background-color: #FFFFF0;
-}
-
-mat-accordion button{
-    background-color:cornsilk ;
+.input {
+    border-color: black;
+    border-width: 3px;
 }

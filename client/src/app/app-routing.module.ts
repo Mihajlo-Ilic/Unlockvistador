@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterInfoComponent } from './register-info/register-info.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
 	//localhost:4200
@@ -10,7 +11,7 @@ const routes: Routes = [
 	//localhost:4200/login
 	{ path: 'login', component: LoginComponent },
 	//localhost:4200/signin
-	{ path: 'signin', component: LoginComponent },
+	{ path: 'signin', component: RegisterComponent },
 	//localhost:4200/succReg/:username
 	{ path: 'succReg/:username', component: RegisterInfoComponent }
 ];
