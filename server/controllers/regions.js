@@ -96,10 +96,29 @@ module.exports.addComment = async(req, res, next) => {
             return res.json({error: "Region not found!"}).status(500)
         }
 
+        let default_uid = mongoose.Types.ObjectId("606f7ff056d684a2fd6331ee")
+        //K: TODO: Testirati dodavanje komentara sa trenutno ulogovanim korisnikom
+        /*
+            if(req.session.loggedin) {
+        *       let user = await User.findOne({email : req.session.email}).exec()
+                if(user) {
+                    default_uid = user._id
+                }
+                else {
+                    //K: ako smo stigli ovde (korisnik je "ulogovan") ali ga nema u bazi, dakle ima neka greska na serveru
+                    res.send("Greska na serveru").status(500)
+                }
+            }
+            else {
+                res.send("Morate biti ulogovani da biste ostavili komentar!");
+            }
+        *
+        * */
         const newComment = {
             _id: new mongoose.Types.ObjectId,
             region: regionId,
-            user: mongoose.Types.ObjectId("606f7ff056d684a2fd6331ee"),
+            //user : user._id
+            user: default_uid,
             comment: comment
         }
 

@@ -1,7 +1,8 @@
 const User = require('../models/users');
 const Regions = require('../models/regions');
 const mongoose = require('mongoose');
-
+const session = require('express-session')
+const bcrypt = require("bcrypt");
 
 let addNewUser = async(req, res, next) => {
     try {
@@ -42,6 +43,40 @@ let addNewUser = async(req, res, next) => {
 
     } catch (error) {
         next(error);
+    }
+}
+
+let authUser = async(req, res, next) => {
+    try {
+        let email = req.body.email;
+        let pswd = req.body.password
+
+        let users = await User.find({email: email}).exec();
+
+        if(users.length > 0) {
+            console.log("Provera sifre")
+            let user = users[0]
+            let isPasswordCorrect = await bcrypt.compare(pswd, user.password)
+            if(isPasswordCorrect) {
+               console.log("Sifra odgovarajuca")
+               req.session.loggedin = true;
+               req.session.email = email;
+
+               user.loggedIn = true;
+               //K: TODO: ovde treba preusmeravanje na home stranicu; moram da testiram sa klijentske strane
+                // dakle nekakav res.redirect(...)
+            }
+            else {
+                res.send("Netacna lozinka!")
+            }
+        }
+        else {
+            res.send("E-mail nije prepoznat")
+        }
+
+    }
+    catch (error) {
+        next(error)
     }
 }
 
@@ -89,6 +124,7 @@ let findUser = async(req, res, next) => {
 }
 
 
+
 let addRegionForUser = async(req, res, next) => {
     try {
         const email = req.body.email;
@@ -129,5 +165,6 @@ let addRegionForUser = async(req, res, next) => {
 module.exports = {
     addNewUser,
     addRegionForUser,
-    findUser
+    findUser,
+    authUser
 }

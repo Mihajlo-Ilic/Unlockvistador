@@ -2,6 +2,7 @@ const express = require("express")
 const app = express()
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
+const session = require("express-session")
 
 const routerRegions = require("./routes/regions")
 const routerUsers = require("./routes/users")
@@ -18,6 +19,12 @@ mongoose.connection.once('open', function () {
 mongoose.connection.on('error', (error) => {
   console.log('Error: ', error);
 });
+
+app.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());

@@ -8,4 +8,5 @@ const controllerUser = require('../controllers/users');
 const upload = require('../upload/uploadImage')
 
 router.post('/', controllerUser.addNewUser);
+router.post('/auth', controllerUser.authUser);
 module.exports = router;
