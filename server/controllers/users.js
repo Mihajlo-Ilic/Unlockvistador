@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt");
 
 module.exports.addNewUser = async(req, res, next) => {
     try {
+        console.log("Enter signin server");
         let image = '';
         if (req.file) {
             image = req.file.filename;
@@ -161,4 +162,5 @@ module.exports.addRegionForUser = async(req, res, next) => {
         next(error);
     }
 }
+
 

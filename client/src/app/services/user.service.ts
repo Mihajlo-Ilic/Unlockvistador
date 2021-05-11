@@ -35,18 +35,18 @@ export class UserService {
     return this.http.get<User>(this.userLink + id);
   }
 
-  public getUserByUsername(username: String): Observable<User> {
-    return this.http.get<User>(this.userLink + "filterByUsername?username=" + username);
+  public getUserByUsername(email: String): Observable<User> {
+    return this.http.get<User>(this.userLink + "findUser?email=" + email);
   }
 
   public addUser(data) {
-    return this.http.post(this.userLink + "register", data);
+    return this.http.post(this.userLink + "signin", data);
   }
 
   //dodavanje novog regiona = izmena kod user-a
   public addRegion(uid, region) {
-    this.http.post(this.userLink + "region/" + uid, region);
-    return this.http.post<any>(this.userLink + "region/" + uid, region);
+    this.http.post(this.userLink + "regions/" + uid, region);
+    return this.http.post<any>(this.userLink + "regions/" + uid, region);
   }
 
   public getCurrentUser(): User {

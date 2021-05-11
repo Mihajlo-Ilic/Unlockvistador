@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterInfoComponent } from './register-info/register-info.component';
 import { RegisterComponent } from './register/register.component';
+import { MainPageComponent } from './main-page/main-page.component';
 
 const routes: Routes = [
 	//localhost:4200
@@ -13,7 +14,9 @@ const routes: Routes = [
 	//localhost:4200/signin
 	{ path: 'signin', component: RegisterComponent },
 	//localhost:4200/succReg/:username
-	{ path: 'succReg/:username', component: RegisterInfoComponent }
+	{ path: 'succReg/:username', component: RegisterInfoComponent },
+	//localhost:4200/main/:username for each user it will be different
+  	{ path: 'main/:username', component: MainPageComponent }
 ];
 
 @NgModule({

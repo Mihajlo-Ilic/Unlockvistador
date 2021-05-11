@@ -34,14 +34,14 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
     if(req.method == "OPTIONS") {
-        res.header("Access-Control-Allow-Methods", "OPTIONS, GET, POST");
+        res.header("Access-Control-Allow-Methods", "OPTIONS, GET, POST, PATCH, DELETE");
         return res.status(200).json({});
     }
 
     next();
 });
 
-app.use('/', routerRegions);
+app.use('/regions', routerRegions);
 app.use('/users', routerUsers);
 
 app.use(function(req, res, next) {
