@@ -1,8 +1,10 @@
 const User = require('../models/users');
 const Regions = require('../models/regions');
 const mongoose = require('mongoose');
-const session = require('express-session')
+const session = require('express-session');
+const jwt = require('jsonwebtoken');
 const bcrypt = require("bcrypt");
+
 
 module.exports.addNewUser = async(req, res, next) => {
     try {
@@ -49,32 +51,46 @@ module.exports.addNewUser = async(req, res, next) => {
 
 module.exports.authUser = async(req, res, next) => {
     try {
-        let email = req.body.email;
+        let uname = req.body.username;
         let pswd = req.body.password
 
-        let users = await User.find({email: email}).exec();
+        let users = await User.find({username: uname}).exec();
 
         if(users.length > 0) {
             console.log("Provera sifre")
             let user = users[0]
-            let isPasswordCorrect = await bcrypt.compare(pswd, user.password)
+            //K: temporarily pausing password encoding for testing purposes
+            //let isPasswordCorrect = await bcrypt.compare(pswd, user.password)
+            let isPasswordCorrect = (pswd === user.password)
             if(isPasswordCorrect) {
                console.log("Sifra odgovarajuca")
                req.session.loggedin = true;
-               req.session.email = email;
+               req.session.username = uname;
 
                user.loggedIn = true;
-               //K: TODO: ovde treba preusmeravanje na home stranicu; moram da testiram sa klijentske strane
-                // dakle nekakav res.redirect(...)
+               await User.updateOne({username : uname},
+                   {$set: user}
+                   ).exec();
+
+                const payload = {
+                    _id: user._id,
+                    email: user.email
+                };
+
+                let token = jwt.sign(payload, 'token', {
+                    expiresIn: 1440
+                });
+
+               res.json({user : user, token: token}).status(201)
             }
             else {
-                res.send("Netacna lozinka!")
+                res.json({error : "Netacna lozinka!"}).status(401)
             }
         }
         else {
-            res.send("E-mail nije prepoznat")
-        }
+            res.json({error: "Nepoznato korisnicko ime!"}).status(401)
 
+        }
     }
     catch (error) {
         next(error)
@@ -84,8 +100,10 @@ module.exports.authUser = async(req, res, next) => {
 module.exports.findUser = async(req, res, next) => {
     console.log("funkcija findUser")
     try {
+        let uname = req.query.username
+        //console.log(uname)
         const user = await User.findOne({
-            email: req.body.email
+            username: uname
         });
 
         if(user) {
@@ -117,6 +135,7 @@ module.exports.findUser = async(req, res, next) => {
             res.status(404).json({
                 error: "User does not exist"
             });
+
         }
 
     } catch (error) {

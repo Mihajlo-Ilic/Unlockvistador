@@ -35,8 +35,8 @@ export class UserService {
     return this.http.get<User>(this.userLink + id);
   }
 
-  public getUserByUsername(email: String): Observable<User> {
-    return this.http.get<User>(this.userLink + "findUser?email=" + email);
+  public getUserByUsername(username: String): Observable<User> {
+    return this.http.get<User>(this.userLink + "findUser?username=" + username);
   }
 
   public addUser(data) {
@@ -67,7 +67,7 @@ export class UserService {
   public login(username: string, password: string) {
     const body = { username, password };
 
-    return this.http.post<any>(this.userLink + 'login', body);
+    return this.http.post<any>(this.userLink + 'auth', body);
   }
 
 }

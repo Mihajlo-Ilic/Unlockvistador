@@ -74,8 +74,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     });
     this.activeSub.push(sub);
     return;
-
-
   }
   /*
     private findUser(username: string, password: string) {

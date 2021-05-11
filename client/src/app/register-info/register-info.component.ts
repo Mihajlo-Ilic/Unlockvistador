@@ -20,15 +20,16 @@ export class RegisterInfoComponent implements OnInit, OnDestroy {
   constructor(public userService: UserService,
     public route: ActivatedRoute) {
 
+    //K: TODO: Sve ovo refaktorisati
     this.paramMapSub = this.route.paramMap.subscribe(params => {
       const pUsername: string = params.get('username');
-//      window.alert(pUsername);
+      window.alert(pUsername);
       this.userService.getUserByUsername(pUsername)
         .subscribe((user: User) => {
           if (user.username !== undefined) {
             this.currentUser = user;
             this.userService.putCurrentUser(this.currentUser);
-  
+
           }
         });
     });

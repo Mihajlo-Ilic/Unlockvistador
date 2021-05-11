@@ -2,24 +2,24 @@ export class User {
 
     constructor(
                 public _id: string,
-                public firstName: string,
-                public lastName: string,
+                public name: string,
+                public lastname: string,
                 public username: string,
                 public email: string,
-                public imgPath: string,
+                public image: string,
                 public password: string,
                 public unlockedRegions: string[] = [],
                 public admin: boolean,
                 public loggedIn: boolean
                 ){
-                    
+
     }
     public getFirsName(): string{
-        return this.firstName;
+        return this.name;
     }
 
     public getLastName(): string {
-        return this.lastName;
+        return this.lastname;
     }
 
     public getUsername(): string{

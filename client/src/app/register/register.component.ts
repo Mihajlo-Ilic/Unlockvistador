@@ -79,10 +79,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
     const body = {
       "username": data.username,
       "password": data.password,
-      "firstName": data.firstName,
-      "lastName": data.lastName,
+      "name": data.name,
+      "lastname": data.lastname,
       "email": data.email,
-      // "imgPath" : data.image
+      // "image" : data.image
     }
     this.userSub = this.userService.addUser(body).subscribe((user: User) => {
       console.log("Uspesno ste registrovani! ");
@@ -93,7 +93,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.router.navigate(['/succReg', data.username]);
   }
 
-  //ubacivanje slike u bazu :  
+  //ubacivanje slike u bazu :
 
   onFileSelected(event) {
     console.log(event);
@@ -103,7 +103,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   onUpload() {
     const formData = new FormData();
     formData.append('image', this.selectedFile, this.selectedFile.name);
-    //ovu putanju promeniti kada se poveze sa bazom! 
+    //ovu putanju promeniti kada se poveze sa bazom!
     this.http.post('./assets/img/', formData, {
       reportProgress: true,
       observe: 'events'
@@ -120,4 +120,4 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.userSub.unsubscribe();
   }
 
-} 
+}
