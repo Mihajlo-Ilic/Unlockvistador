@@ -4,7 +4,18 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const jwt = require('jsonwebtoken');
 const bcrypt = require("bcrypt");
+require('dotenv').config()
 
+module.exports.authenticateUser = (req,res,next) => {
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(' ')[1]
+    if(token == null) return res.status(402)
+    jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,(err,user) => {
+        if(err) return res.sendStatus(403)
+        req.user = user
+        next()
+    })
+} 
 
 module.exports.addNewUser = async(req, res, next) => {
     try {
@@ -77,7 +88,7 @@ module.exports.authUser = async(req, res, next) => {
                     email: user.email
                 };
 
-                let token = jwt.sign(payload, 'token', {
+                let token = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
                     expiresIn: 1440
                 });
 
