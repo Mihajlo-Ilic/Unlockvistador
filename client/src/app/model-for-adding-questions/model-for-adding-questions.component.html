@@ -1,0 +1,52 @@
+
+<div class="ui-grid">
+  <div class="four wide column">
+    <div class="ui card">
+      <!--
+      <div class="image">
+        <img [src]="user.imgUrl" alt="User's profile picture" />
+      </div> we shall add our image later -->
+      <div class="content">
+        <a class="header">{{ regionName }}</a>
+      </div>
+    </div>
+  </div>
+  <div class="twelve wide column">
+    <button class="ui button" type="" (click)="close()">Exit</button>
+    <form class="ui form" [formGroup]="checkForm" class="card-body" (ngSubmit)="submitAddQuestion(checkForm.value)">
+      <div [class]="inputFieldClass">
+        <label>Text</label>
+        <input type="text" name="name" class="text" formControlName="text" [value]="Questions.text" required/>
+      </div>
+      <div [class]="inputFieldClass">
+        <label>answer</label>
+        <input type="text" name="answer" class="answer" formControlName="answer" [value]="Questions.answer" required/>
+      </div>
+      <div [class]="inputFieldClass">
+        <label>false answer 1</label>
+        <input type="text" name="false_answer 1" class="false_answer1" formControlName="false_answer1" [value]="Questions.false_answer1" required/>
+      </div>
+      <div [class]="inputFieldClass">
+        <label>false answer 2</label>
+        <input type="text" name="false_answer2" class="false_answer2" formControlName="false_answer2" [value]="Questions.false_answer2" required/>
+      </div>
+      <div [class]="inputFieldClass">
+        <label>false answer 3</label>
+        <input type="text" name="false_answer3" class="false_answer3" formControlName="false_answer3" [value]="Questions.false_answer3" required/>
+      </div>
+      <div [class]="inputFieldClass">
+        <label>false answer 4</label>
+        <input type="text" name="false_answer4" class="false_answer4" formControlName="false_answer4" [value]="Questions.false_answer4" required/>
+      </div>
+      <div [class]="inputFieldClass">
+        <label>false answer 5</label>
+        <input type="text" name="false_answer5" class="false_answer5" formControlName="false_answer5" [value]="Questions.false_answer5" required/>
+      </div>
+      <div [class]="inputFieldClass">
+        <label>false answer 6</label>
+        <input type="text" name="false_answer6" class="false_answer6" formControlName="false_answer6" [value]="Questions.false_answer6" required/>
+      </div>
+      <button class="ui button" type="button" (click)="submitAddQuestion(checkForm.value)">Add question</button>
+    </form>
+  </div>
+</div>

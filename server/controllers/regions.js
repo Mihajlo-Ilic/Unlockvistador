@@ -226,9 +226,9 @@ module.exports.getQuestion = async(req, res, next) => {
 }
 // G : this module is made for adding question in database from client
 module.exports.inputQuestion = async(req,res,next) => {
+    console.log("I AM AT CONTROLERS")
     try {
-        let loggedIn = req.body.loggedIn;
-        let admin = req.body.admin;
+        let admin = true;
         let text = req.body.text;
         let answer = req.body.answer;
         let false_answer1 = req.body.false_answer1;
@@ -237,7 +237,8 @@ module.exports.inputQuestion = async(req,res,next) => {
         let false_answer4 = req.body.false_answer4;
         let false_answer5 = req.body.false_answer5;
         let false_answer6 = req.body.false_answer6;
-        let regionId = await this.getRegionId(regionName);
+        console.log(text)
+        let regionId = await getRegionId(req.body.regionName);
         if(regionId === -1) {
             res.status(404).json("Nije pronadjen ID regiona s tim imenom")
         } else {
@@ -253,7 +254,7 @@ module.exports.inputQuestion = async(req,res,next) => {
                 false_answer5 : false_answer5,
                 false_answer6 : false_answer6,
             }
-            if(admin == True) {
+            if(admin == true) {
                 Questions.create(newQuestion)
                 .then(user => {
                     res.status(200).json({poruka : 'Added question!'});

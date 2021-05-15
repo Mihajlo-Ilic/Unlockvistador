@@ -20,6 +20,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RegisterInfoComponent } from './register-info/register-info.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { ModelForAddingQuestionsComponent } from './model-for-adding-questions/model-for-adding-questions.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MainPageComponent } from './main-page/main-page.component';
     LoginComponent,
     RegisterComponent,
     RegisterInfoComponent,
-    MainPageComponent
+    MainPageComponent,
+    ModelForAddingQuestionsComponent
   ],
   imports: [
     BrowserModule,

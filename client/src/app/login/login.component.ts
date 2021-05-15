@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     private auth: AuthService) {
 
     this.user = userService.getUsers();
-
     this.checkForm = formBuilder.group({
       username: ['', [Validators.required, Validators.pattern("[a-zA-Z]+[0-9]*")]],
       password: ['', [Validators.required, Validators.pattern("[a-zA-Z]+[0-9]+")]]
@@ -82,11 +81,11 @@ export class LoginComponent implements OnInit, OnDestroy {
         console.log(e.user.username);
         if (e.user.username !== undefined) {
           this.auth.storeToken(e.token);
-  
+
           this.currentUsername = e.user.username;
           this.userService.putCurrentUser(e.user);
           this.profileExist = true;
-  
+
         }
       });
       this.activeSub.push(sub);
