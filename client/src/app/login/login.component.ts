@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     const sub = this.userService.login(data.username, data.password).subscribe(e => {
       if (e.user) {
         if (e.user.username !== undefined) {
-          this.auth.storeToken(e.token);
+          this.auth.storeToken(e.accessToken);
 
           this.currentUsername = e.user.username;
           this.userService.putCurrentUser(e.user);

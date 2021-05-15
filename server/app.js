@@ -6,6 +6,9 @@ const session = require("express-session")
 
 const routerRegions = require("./routes/regions")
 const routerUsers = require("./routes/users")
+require('dotenv').config()
+
+
 
 mongoose.connect("mongodb://127.0.0.1:27017/Unlockvistador", {
     useNewUrlParser: true,
