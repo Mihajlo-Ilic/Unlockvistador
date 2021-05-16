@@ -7,17 +7,17 @@ const regionsShema = mongoose.Schema({
         require : true
     },
     image: {
-        type: Array,
-        require: false
+        type: String,
+        require: true
     },
     facts: {
-		type: Array,
+		type: String,
 		require: true
 	},
 	locked: {
 		type: Boolean,
 		require: true
-	},
+	}
 });
 
 const regionsModel = mongoose.model('Regions', regionsShema);

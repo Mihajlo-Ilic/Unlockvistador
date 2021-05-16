@@ -1,8 +1,0 @@
-@import '~bootstrap/dist/css/bootstrap.min.css';
-@import "~@angular/material/prebuilt-themes/purple-green.css";
-html, body { height: 100%; }
-body { 
-	margin: 0;
-	font-family: "Goudy Old Style", sans-serif;
-	background-image: url(./assets/images/background.png);
-}

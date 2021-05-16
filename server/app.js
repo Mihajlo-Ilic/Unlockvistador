@@ -2,12 +2,8 @@ const express = require("express")
 const app = express()
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
-const session = require("express-session")
 
-const routerRegions = require("./routes/regions")
-const routerUsers = require("./routes/users")
-require('dotenv').config()
-
+const routes = require("./routes/routes")
 
 
 mongoose.connect("mongodb://127.0.0.1:27017/Unlockvistador", {
@@ -15,37 +11,23 @@ mongoose.connect("mongodb://127.0.0.1:27017/Unlockvistador", {
     useUnifiedTopology: true
 });
 
-mongoose.connection.once('open', function () {
-  console.log('Successful connection to mongoose!');
-});
-
-mongoose.connection.on('error', (error) => {
-  console.log('Error: ', error);
-});
-
-app.use(session({
-	secret: 'secret',
-	resave: true,
-	saveUninitialized: true
-}));
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", '*');
-    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    res.header("Access-Control-Allow-Headers", "Content-Type");
 
     if(req.method == "OPTIONS") {
-        res.header("Access-Control-Allow-Methods", "OPTIONS, GET, POST, PATCH, DELETE");
+        res.header("Access-Control-Allow-Methods", "OPTIONS, GET, POST");
         return res.status(200).json({});
     }
 
     next();
 });
 
-app.use('/regions', routerRegions);
-app.use('/users', routerUsers);
+app.use('/', routes)
 
 app.use(function(req, res, next) {
     const error = new Error("Zahtev nije podrzan od servera")
@@ -55,7 +37,7 @@ app.use(function(req, res, next) {
 })
 
 app.use(function(error,req,res,next){
-    res.status(error.status || 500).json({greska: {poruka:error.message}});
+    res.status(error.status|| 500).json({greska: {poruka:error.message}});
 })
 
 module.exports = app

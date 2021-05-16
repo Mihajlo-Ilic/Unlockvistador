@@ -33,11 +33,6 @@ const userSchema = new mongoose.Schema({
     admin: {
         type: Boolean,
         require: true
-    },
-    loggedIn: {
-        type: Boolean,
-        require: true,
-        default: false
     }
 });
 
