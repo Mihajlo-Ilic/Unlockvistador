@@ -54,8 +54,8 @@ export class UserService {
   }
 
   public putCurrentUser(user: User) {
+    //this.currentUser = user;
     this.currentUser = user;
-    //    window.alert(this.currentUser);
   }
 
   public updateUserById(id: String, data): Observable<User> {

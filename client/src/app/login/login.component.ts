@@ -60,8 +60,12 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.auth.storeToken(e.accessToken);
 
           this.currentUsername = e.user.username;
-          this.userService.putCurrentUser(e.user);
+          let usrObj = new User(e.user._id, e.user.name, e.user.lastname, e.user.username,
+             e.user.email, e.user.image, e.user.password, e.user.unlockedRegions, e.user.admin, e.user.loggedIn, e.accessToken)
+          this.userService.putCurrentUser(usrObj);
+          
           this.router.navigate(['/main', data.username]);
+          //window.alert(this.userService.currentUser.getUnlockedRegions())     
           return;
         }
       }

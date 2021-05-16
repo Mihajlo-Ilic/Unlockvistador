@@ -8,9 +8,10 @@ export class User {
                 public email: string,
                 public image: string,
                 public password: string,
-                public unlockedRegions: string[] = [],
+                public unlockedRegions: string[],
                 public admin: boolean,
-                public loggedIn: boolean
+                public loggedIn: boolean,
+                public accessToken : string
                 ){
 
     }
@@ -24,5 +25,13 @@ export class User {
 
     public getUsername(): string{
         return this.username;
+    }
+
+    public getUnlockedRegions() : string[] {
+        return this.unlockedRegions;
+    }
+
+    public getAccessToken() : string {
+        return this.accessToken;
     }
 }
