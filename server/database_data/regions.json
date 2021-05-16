@@ -3,20 +3,98 @@
     "$oid": "606f821656d684a2fd6331f0"
   },
   "name": "Backa",
-  "facts": "Bačka je dobila ime po gradu Baču. Ovo je tipična slovenska imenska forma sa sufiksom „ka“, koju su kasnije usvojili i Nemci i Mađari.",
-  "locked": "true"
+  "facts": [
+    "Bačka je dobila ime po gradu Baču. Ovo je tipična slovenska imenska forma sa sufiksom „ka“, koju su kasnije usvojili i Nemci i Mađari.",
+    "U Somboru je veoma dobro pivo",
+    "Vlasnik vinarije Zvonko Bogdan nije Zvonko Bogdan"
+  ],
+  "locked": true
 },{
   "_id": {
     "$oid": "606f828756d684a2fd6331f1"
   },
   "name": "Raska",
-  "facts": "Samo ime Raška (lat. Rassia — Rasija) prvi put se pominje 1189. godine. Od tada Mlečani, Nemci i Mađari do 18. veka Srbiju često nazivaju Rascija (lat. Rascia), a shodno tome su i Srbe često nazivali Rašanima, odnosno Rascijanima (lat. Rasciani) ili Racima i slično.",
-  "locked": "true"
+  "facts": [
+    "Samo ime Raška (lat. Rassia — Rasija) prvi put se pominje 1189. godine. Od tada Mlečani, Nemci i Mađari do 18. veka Srbiju često nazivaju Rascija (lat. Rascia), a shodno tome su i Srbe često nazivali Rašanima, odnosno Rascijanima (lat. Rasciani) ili Racima i slično.",
+    "Sandžak je drugi naziv za Rašku koji je došao kada su Turci osvojili region 1456. godine",
+    "Novi Pazar je poznat po tome jer ima dosta domaćih proizvodjača cipela i čizama"
+  ],
+  "locked": true
 },{
   "_id": {
     "$oid": "606f82f756d684a2fd6331f2"
   },
   "name": "Sumadija",
-  "facts": "Šumadija je geografska regija u Srbiji. Ime je dobila po šumama koje su nekada prekrivale najveći deo njene teritorije. Administrativno središte je Kragujevac, koji je ujedno i centar Šumadijskog okruga",
-  "locked": "false"
+  "facts": [
+    "Šumadija je geografska regija u Srbiji. Ime je dobila po šumama koje su nekada prekrivale najveći deo njene teritorije. Administrativno središte je Kragujevac, koji je ujedno i centar Šumadijskog okruga",
+    "Tara je nacionalni park koji se nalazi u granici sa Raškom u kojima se nalazi retko drvo Pančićeva omorika i životinje kao što su mrki medved, vukovi, jeleni...",
+    "Šumadija je tek posle 13. veka bio značajno uporište za Srbe, do tada je centar moći bila Raška i Primorske zemlje"
+  ],
+  "locked": false
+},{
+  "_id": {
+    "$oid": "6079419759b8a11ef5e904d1"
+  },
+  "name": "Banat",
+  "facts": [
+    "Banat je dobio ime po tituli ban, a 'banatima' su nazivane sve pogranične mađarske zemlje kojima su banovi vladali.",
+    "Banatski džep je varijanta Karadjordjeve šnicle punjene sampinjonima čiji joj je recept nastao u Beloj crkvi",
+    "Opis srpskog društva u Banatu dobro opisuje pisac Stevan Sremac u romanu Pop Ćira i pop Spira, u kojima piše o komšijskim odnosima, odnosima crkve i naroda kao i odnosima srpskog naroda sa raznim drugim"
+  ],
+  "locked": true
+},{
+  "_id": {
+    "$oid": "6079428959b8a11ef5e904d2"
+  },
+  "name": "Srem",
+  "facts": [
+    "Ovaj region dobio je ime po imenu antičkog grada Sirmijuma (današnja Sremska Mitrovica)",
+    "Istorijska regija Srema ne pokriva samo regiju koja se danas zove Srem(Onostrani Srem), nego i regiju Mačve(Ovostrani Srem)",
+    "Srbi su naselili Srem još pre velike seobe srba, negde oko pada Despotovine, odakle potiču neki manastiri poput Krušedola na Fruškoj Gori"
+  ],
+  "locked": true
+},{
+  "_id": {
+    "$oid": "6079433759b8a11ef5e904d4"
+  },
+  "name": "Beograd",
+  "facts": [
+    "Ime \"Beligrad\" spominje se prvi put 878. godine u pismu pape Jovana VIII",
+    "Šabac se još zvao parizom Srbije jer je bio živopisan i moderne gradje početkom 20. veka",
+    "Vinčanska civilizacija je bila kultura sa centrom u Vinči(istočno od Beograda) koja je imala veoma razvijen sistem kao i proto pismeni sistem. Njihova civilizacija je trajala oko jednog milenijuma"
+  ],
+  "locked": true
+},{
+  "_id": {
+    "$oid": "607943ff59b8a11ef5e904d5"
+  },
+  "name": "Nis",
+  "facts": [
+    "Ime grada Niša može se naći u mnogobrojnim istorijskim izvorima iz perioda srednjeg veka do savremenog doba (Naissus, Nais, Nisus, Nissa...)",
+    "Pored Carigrada, Sofije, Nikeje...Konstantin Veliki(koji je bio rodjen u Naisusu) je hteo da proglasi Niš za novu prestonicu Rimskog carstva, ali Vizantion je bio na boljoj lokaciji",
+    "Ćele kula je nastala nakon prvog srpskog ustanka kada su Turci podigli mauzolej od lobanja pobunjenika."
+  ],
+  "locked": true
+},{
+  "_id": {
+    "$oid": "6079462559b8a11ef5e904d6"
+  },
+  "name": "Kosovo",
+  "facts": [
+    "Naziv Kosovo potiče od slovenske, srpske reči kos — crna ptica, a pojam Kosovo označava, na srpskom jeziku, oblast naseljenu tim pticama.",
+    "Iako je poznata bitka 1389. godine na Kosovu polju, ona nije bila prva. Prva bitka je bila 1369. godine izmedju Mrnjavčevića i Cara Uroša Nemanjića",
+    "Novo Brdo, danas mali gradić na severu Kosova, je nekada bio jedan od najbogatijih rudnika srednjeg veka u kojima se kopala legura srebra i zlata"
+  ],
+  "locked": true
+},{
+  "_id": {
+    "$oid": "6079470d59b8a11ef5e904d7"
+  },
+  "name": "Istok",
+  "facts": [
+    "U rimsko doba, ovo područje bilo je u sastavu provincije Mezije",
+    "Istočna srbija je jedna od poslednjih lokacijama na kojima žive Vlasi, romansko stanovništvo koje je primilo slovenske običaje",
+    "U Resavi je bio prvi ozbiljniji centar srpkog školskog sistema koja je cvetala pre pada Smedereva 1459. godine"
+  ],
+  "locked": true
 }]
