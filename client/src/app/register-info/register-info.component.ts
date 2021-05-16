@@ -24,7 +24,7 @@ export class RegisterInfoComponent implements OnInit, OnDestroy {
     this.paramMapSub = this.route.paramMap.subscribe(params => {
       const pUsername: string = params.get('username');
       window.alert(pUsername);
-      this.userService.getUserByUsername(pUsername)
+      this.userService.getUserByUsername(pUsername,"http://localhost:3000/users/")
         .subscribe((user: User) => {
           if (user.username !== undefined) {
             this.currentUser = user;

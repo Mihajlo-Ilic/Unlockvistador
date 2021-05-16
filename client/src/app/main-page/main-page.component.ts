@@ -1,7 +1,10 @@
+import { RegionService } from './../services/region.service';
+import { User } from './../models/user.model';
+import { UserService } from './../services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ModelForAddingQuestionsComponent } from './../model-for-adding-questions/model-for-adding-questions.component';
 import { Component, OnInit } from '@angular/core';
-import { RegionService } from '../services/region.service';
+
 
 @Component({
   selector: 'app-main-page',
@@ -12,10 +15,21 @@ export class MainPageComponent implements OnInit {
 
     clickedRegion  = null;
     localUserName = null;
+    clickedShowComments = false;
+    clickedShowFunFacts = false;
 
-  	constructor(private rout : ActivatedRoute) {
-      this.localUserName = this.rout.snapshot.params.username
-      console.log(this.localUserName)
+    currentUser = null;
+    isAdminUser = false;
+    unlockedRegions = []
+
+
+  	constructor(private rout : ActivatedRoute, private regionService : RegionService, private userService : UserService) {
+      this.currentUser = this.userService.currentUser;
+      this.isAdminUser = this.currentUser.admin;
+      this.unlockedRegions = this.currentUser.unlockedRegions
+      console.log(this.currentUser);
+      console.log(this.isAdminUser);
+      console.log(this.unlockedRegions);
     }
 
   	ngOnInit(): void {
@@ -31,93 +45,52 @@ export class MainPageComponent implements OnInit {
 
     }
 
+    public isUnlockedRegion() {
+      for(let i = 0; i < this.unlockedRegions.length; i++) {
+        if(this.unlockedRegions[i] == this.clickedRegion.toString()) {
+          return true;
+        }
+      }
+      return false;
+    }
+
     public clickHandlerBanat() {
       this.clickedRegion = "Banat"
-      alert("KLIK")
-    }
-    public mouseOverHandlerBanat() {
-
-    }
-    public mouseOutHandlerBanat() {
 
     }
 
     public clickHandlerBacka() {
-
-    }
-    public mouseOverHandlerBacka() {
-
-    }
-    public mouseOutHandlerBacka() {
-
+      this.clickedRegion = "Backa"
     }
 
     public clickHandlerSrem() {
-
-    }
-    public mouseOverHandlerSrem() {
-
-    }
-    public mouseOutHandlerSrem() {
-
+      this.clickedRegion = "Srem"
     }
 
     public clickHandlerBeograd() {
-
-    }
-    public mouseOverHandlerBeograd() {
-
-    }
-    public mouseOutHandlerBeograd() {
-
+      this.clickedRegion = "Beograd"
     }
 
     public clickHandlerIstok() {
-      }
-    public mouseOverHandlerIstok() {
-
-    }
-    public mouseOutHandlerIstok() {
-
+      this.clickedRegion = "Istok"
     }
 
     public clickHandlerSumadija() {
-
-    }
-    public mouseOverHandlerSumadija() {
-
-    }
-    public mouseOutHandlerSumadija() {
-
+      this.clickedRegion = "Sumadija"
     }
 
     public clickHandlerNisava() {
-
-    }
-    public mouseOverHandlerNisava() {
-
-    }
-    public mouseOutHandlerNisava() {
-
+      this.clickedRegion = "Nisava"
     }
 
     public clickHandlerRaska() {
-
-    }
-    public mouseOverHandlerRaska() {
-
-    }
-    public mouseOutHandlerRaska() {
-
+      this.clickedRegion = "Raska"
     }
 
     public clickHandlerKosovo() {
-
+      this.clickedRegion = "Kosovo"
     }
-    public mouseOverHandlerKosovo() {
-
+    public randomFja() : void {
+      console.log(this.clickedShowFunFacts);
     }
-    public mouseOutHandlerKosovo() {
-    }
-
 }

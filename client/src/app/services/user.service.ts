@@ -35,8 +35,9 @@ export class UserService {
     return this.http.get<User>(this.userLink + id);
   }
 
-  public getUserByUsername(username: String): Observable<User> {
-    return this.http.get<User>(this.userLink + "findUser?username=" + username);
+  public getUserByUsername(username: String, link : String): Observable<User> {
+    let userLink = link
+    return this.http.get<User>(userLink + "findUser?username=" + username);
   }
 
   public addUser(data) {
@@ -56,6 +57,7 @@ export class UserService {
   public putCurrentUser(user: User) {
     //this.currentUser = user;
     this.currentUser = user;
+    console.log(this.currentUser);
   }
 
   public updateUserById(id: String, data): Observable<User> {

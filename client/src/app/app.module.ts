@@ -22,6 +22,7 @@ import { RegisterInfoComponent } from './register-info/register-info.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { ModelForAddingQuestionsComponent } from './model-for-adding-questions/model-for-adding-questions.component';
 import { RegionDialogComponent } from './region-dialog/region-dialog.component';
+import { FunFactsComponent } from './fun-facts/fun-facts.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { RegionDialogComponent } from './region-dialog/region-dialog.component';
     RegisterInfoComponent,
     MainPageComponent,
     ModelForAddingQuestionsComponent,
-    RegionDialogComponent
+    RegionDialogComponent,
+    FunFactsComponent
   ],
   imports: [
     BrowserModule,

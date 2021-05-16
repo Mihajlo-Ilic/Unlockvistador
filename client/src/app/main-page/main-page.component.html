@@ -4,57 +4,39 @@
                     <svg class = "serbia" width="568" height="739">
                         <!--G : Backa-->
                     <polygon points="28,51,86,31,112,8,159,15,159,148,172,163,142,155,63,155,42,148" style="fill:lime;"
-                    onmouseout="mouseOutHandlerBacka()"
-                    onmouseover="mouseOverHandlerBacka()"
-                    onclick="clickHandlerBacka()"
+                    (click)="clickHandlerBacka()"
                     id = "BackaID"/>
                         <!--G : Banat -->
                     <polygon points="183,19,254,134,327,178,333,217,311,233,230,245,194,187,159,149,159,15" style="fill:yellow"
-                    onmouseout="mouseOutHandlerBanat()"
-                    onmouseover="mouseOverHandlerBanat()"
                     (click)="clickHandlerBanat()"
                     id = "BanatID"/>
                         <!--G: Srem-->
                     <polygon points="61,155,142,155,172,163,194,187,137,198,142,221,80,215,37,218,41,176,88,164" style="fill:rgb(24, 51, 126)"
-                    onmouseout="mouseOutHandlerSrem()"
-                    onmouseover="mouseOverHandlerSrem()"
-                    onclick="clickHandlerSrem()"
+                    (click)="clickHandlerSrem()"
                     id = "SremID"/>
                         <!--G: Beograd-->
                     <polygon points="65,254,80,215,142,221,137,198,194,187,230,245,234,272" style="fill:rgb(126, 24, 121)"
-                    onmouseout="mouseOutHandlerBeograd()"
-                    onmouseover="mouseOverHandlerBeograd()"
-                    onclick="clickHandlerBeograd()"
+                    (click)="clickHandlerBeograd()"
                     id = "BeogradID"/>
                         <!--G: Ist. Srbija-->
-                        <polygon points="305,420,251,372,229,245,311,233,383,260,400,287,434,247,474,271,440,286,465,314,465,325,429,364,428,413,308,413" style="fill:rgb(139, 153, 105)"
-                    onmouseout="mouseOutHandlerIstok()"
-                    onmouseover="mouseOverHandlerIstok()"
-                    onclick="clickHandlerIstok()"
+                    <polygon points="305,420,251,372,229,245,311,233,383,260,400,287,434,247,474,271,440,286,465,314,465,325,429,364,428,413,308,413" style="fill:rgb(139, 153, 105)"
+                    (click)="clickHandlerIstok()"
                     id = "IstokID"/>
                         <!--G: Sumadija -->
                     <polygon points="106,358,53,314,53,279,65,254,234,271,251,372,305,420,295,444" style="fill:rgb(111, 92, 146)"
-                    onmouseout="mouseOutHandlerSumadija()"
-                    onmouseover="mouseOverHandlerSumadija()"
-                    onclick="clickHandlerSumadija()"
+                    (click)="clickHandlerSumadija()"
                     id = "SumadijaID"/>
                         <!--G: Nisava -->
                     <polygon points="374,652,380,581,338,562,343,546,279,483,308,412,428,413,507,500,440,560,444,628" style="fill:rgb(12, 53, 46)"
-                    onmouseout="mouseOutHandlerNisava()"
-                    onmouseover="mouseOverHandlerNisava()"
-                    onclick="clickHandlerNisava()"
+                    (click)="clickHandlerNisava()"
                     id = "NisavaID"/>
                         <!--G: Raska -->
                     <polygon points="50,449,61,429,89,437,92,412,66,366,106,358,295,444,279,484,256,488,216,526,221,539,185,546" style="fill:rgb(51, 165, 140)"
-                    onmouseout="mouseOutHandlerRaska()"
-                    onmouseover="mouseOverHandlerRaska()"
-                    onclick="clickHandlerRaska()"
+                    (click)="clickHandlerRaska()"
                     id = "RaskaID"/>
                         <!--G: Kosovo i Metohija -->
                     <polygon points="217,724,221,703,155,597,150,566,173,568,185,546,221,539,216,526,256,488,279,483,343,546,338,562,380,581,374,652,303,677,286,658,239,685,243,712" style="fill:rgb(177, 115, 15)"
-                    onmouseout="mouseOutHandlerKosovo()"
-                    onmouseover="mouseOverHandlerKosovo()"
-                    onclick="clickHandlerKosovo()"
+                    (click)="clickHandlerKosovo()"
                     id = "KosovoID"/>
                         <!--G: Treba da se dodaju ostali regioni koji su na mapi!-->
                     </svg>
@@ -62,9 +44,10 @@
     <mat-grid-tile [colspan]="2" [rowspan]="2">Informacije o pitanjeima</mat-grid-tile>
 
 </mat-grid-list>
-<app-model-for-adding-questions *ngIf = "clickedRegion != null" (closeEmiter) = "clickedRegion = null" [regionName] = "clickedRegion" [localUserName] = "localUserName"></app-model-for-adding-questions>
-
-<!-- komponenta za korisnika koji klikne na otkljucanu oblast : bira izmedju komentara i funfac-->
+<app-model-for-adding-questions *ngIf = "clickedRegion != null && isAdminUser == true" (closeEmiter) = "clickedRegion = null" [regionName] = "clickedRegion" [localUserName] = "localUserName"></app-model-for-adding-questions>
+<app-region-dialog *ngIf = "clickedRegion != null && isAdminUser == false && isUnlockedRegion() == true" [regionName] = "clickedRegion" (closeEmiter) = "clickedRegion = null" (closeEmiter2) = "clickedRegion = null; clickedShowFunFacts = true; randomFja();"
+ (closeEmiter3) = "clickedRegion = null; clickedShowComments = true;"></app-region-dialog>
+<app-fun-facts *ngIf = "clickedShowFunFacts == true"></app-fun-facts>
 <!-- izabran je fun fac-->
 <!-- izabran kom-->
 <!-- kviz -->
