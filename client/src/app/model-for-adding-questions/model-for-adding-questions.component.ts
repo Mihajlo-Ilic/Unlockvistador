@@ -13,7 +13,8 @@ import { Question } from "../models/question.model"
 export class ModelForAddingQuestionsComponent implements OnInit {
   Questions : Question = new Question("bla","bla","bla","bla","bla","bla","bla","bla","bla","bla");
 
-  @Output() closeEmiter = new EventEmitter<boolean>()
+  @Output() closeEmiter = new EventEmitter<boolean>();
+
 
   public checkForm: FormGroup;
   @Input() localUserName: string;
@@ -77,4 +78,6 @@ export class ModelForAddingQuestionsComponent implements OnInit {
     console.log(this.Questions)
     this.closeEmiter.emit(true);
   }
+
+
 }

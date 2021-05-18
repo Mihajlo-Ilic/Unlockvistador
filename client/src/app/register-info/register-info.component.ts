@@ -12,7 +12,6 @@ import { Subscription } from 'rxjs';
 })
 export class RegisterInfoComponent implements OnInit, OnDestroy {
 
-
   public currentUser: User;
 
   private paramMapSub: Subscription;

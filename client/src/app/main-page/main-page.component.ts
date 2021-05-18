@@ -35,15 +35,6 @@ export class MainPageComponent implements OnInit {
   	ngOnInit(): void {
   	}
 
-  	public sendGetReq(ime_oblasti) {
-
-    }
-
-    public openAdderQuestion(ime_oblasti) {
-
-      // otvoriti adderquestion ako je user admin za neku oblast!
-
-    }
 
     public isUnlockedRegion() {
       for(let i = 0; i < this.unlockedRegions.length; i++) {

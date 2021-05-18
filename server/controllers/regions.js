@@ -16,6 +16,8 @@ async function getRegionId(regionName) {
 
 // this module is starting a test also
 
+// 
+
 module.exports.getRegion = async (req, res, next) => {
     try {
         const regionName = req.params.region_name;
@@ -166,34 +168,27 @@ module.exports.unlockRegion = async(req,res,next) => {
 
 module.exports.getRegionFacts = async(req, res, next) => {
     try {
-		const regionName = req.params.region_name;
-        
+		const regionName = req.query.regionName;
+        console.log(regionName)
         let regions = await Regions.find({name : regionName}).exec()
         if(regions.length === 0){
+            
             res.status(404).json("Region not found!");
             return;
         }
         else {
             let region = regions[0]
-            let msg = ""
-            if(region.locked) {
-                msg = "Nemate pristup regionu!"
                 //ovde pozvati asinhroni zahtev ka kolekciji questions da se nadje pitanje za region
                 //i pitanje vratiti kao msg
-                res.json({message : msg}).status(200);
-            }
-            else {
                 // we are getting random fact and a picture
-                let numOfFacts = region.facts.lenght();
+                let numOfFacts = region.facts.length;
                 let randomNum = Math.floor(numOfFacts * Math.random())
                 msg = region.facts[randomNum];
-                let numOfPictures = region.image.length();
+                let numOfPictures = region.image.length;
                 randomNum = Math.floor(numOfPictures * Math.random())
-                msg2 = region.image[randomNum]
+                let msg2 = region.image[randomNum]
                 res.json({fact : msg, picture : msg2}).status(200);
-            }
-        }
-        
+            }     
     } catch (error) {
         console.log(error.message)
         next(error);
