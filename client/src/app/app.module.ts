@@ -23,6 +23,8 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { ModelForAddingQuestionsComponent } from './model-for-adding-questions/model-for-adding-questions.component';
 import { RegionDialogComponent } from './region-dialog/region-dialog.component';
 import { FunFactsComponent } from './fun-facts/fun-facts.component';
+import { CommentsDisplayComponent } from './comments-display/comments-display.component';
+import { QuizComponentComponent } from './quiz-component/quiz-component.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { FunFactsComponent } from './fun-facts/fun-facts.component';
     MainPageComponent,
     ModelForAddingQuestionsComponent,
     RegionDialogComponent,
-    FunFactsComponent
+    FunFactsComponent,
+    CommentsDisplayComponent,
+    QuizComponentComponent
   ],
   imports: [
     BrowserModule,

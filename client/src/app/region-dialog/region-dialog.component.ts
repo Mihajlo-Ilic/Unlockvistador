@@ -1,6 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { FormGroup,FormBuilder, Validators } from '@angular/forms';
-import { RegionService } from './../services/region.service'
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'app-region-dialog',
@@ -17,9 +15,8 @@ export class RegionDialogComponent implements OnInit {
   @Output() closeEmiter2 = new EventEmitter<boolean>();
   @Output() closeEmiter3 = new EventEmitter<boolean>();
 
-  constructor(private http : HttpClient,private fb: FormBuilder, private regionService : RegionService) {
-
-
+  constructor() {
+      
   }
 
   public close() : void {
@@ -27,6 +24,7 @@ export class RegionDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.regionName)
   }
 
   public showFunFacts() {

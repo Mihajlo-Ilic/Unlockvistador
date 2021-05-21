@@ -1,0 +1,22 @@
+<div class="ui-grid">
+    <div class="four wide column">
+      <div class="ui card">
+        <div class="content">
+          <a class="header" style="background-color: bisque;">{{regionName}} - kviz</a>
+        </div>
+      </div>
+    </div>
+    <div class="twelve wide column">
+        <button class="ui button" type="" (click)="close()">Exit</button>
+        <div id="question-placeholder">
+            <h3>
+                {{question.text}}
+            </h3>
+        </div>
+        <fieldset *ngFor = "let answer of displayAnswers">
+            <button type="button" (click) = "checkAnswer(answer)">
+                {{answer}}
+            </button>
+        </fieldset>
+    </div>
+  </div>

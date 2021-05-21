@@ -17,6 +17,7 @@ export class MainPageComponent implements OnInit {
     localUserName = null;
     clickedShowComments = false;
     clickedShowFunFacts = false;
+    clickedRegionDialog = false;
 
     currentUser = null;
     isAdminUser = false;
@@ -47,39 +48,48 @@ export class MainPageComponent implements OnInit {
 
     public clickHandlerBanat() {
       this.clickedRegion = "Banat"
+      this.clickedRegionDialog = true;
 
     }
 
     public clickHandlerBacka() {
       this.clickedRegion = "Backa"
+      this.clickedRegionDialog = true;
     }
 
     public clickHandlerSrem() {
       this.clickedRegion = "Srem"
+      this.clickedRegionDialog = true;
     }
 
     public clickHandlerBeograd() {
       this.clickedRegion = "Beograd"
+      this.clickedRegionDialog = true;
     }
 
     public clickHandlerIstok() {
       this.clickedRegion = "Istok"
+      this.clickedRegionDialog = true;
     }
 
     public clickHandlerSumadija() {
       this.clickedRegion = "Sumadija"
+      this.clickedRegionDialog = true;
     }
 
     public clickHandlerNisava() {
       this.clickedRegion = "Nisava"
+      this.clickedRegionDialog = true;
     }
 
     public clickHandlerRaska() {
       this.clickedRegion = "Raska"
+      this.clickedRegionDialog = true;
     }
 
     public clickHandlerKosovo() {
       this.clickedRegion = "Kosovo"
+      this.clickedRegionDialog = true;
     }
     public randomFja() : void {
       console.log(this.clickedShowFunFacts);

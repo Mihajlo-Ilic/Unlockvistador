@@ -45,9 +45,11 @@
 
 </mat-grid-list>
 <app-model-for-adding-questions *ngIf = "clickedRegion != null && isAdminUser == true" (closeEmiter) = "clickedRegion = null" [regionName] = "clickedRegion" [localUserName] = "localUserName"></app-model-for-adding-questions>
-<app-region-dialog *ngIf = "clickedRegion != null && isAdminUser == false && isUnlockedRegion() == true && clickedShowFunFacts == false && clickedShowComments == false" [regionName] = "clickedRegion" (closeEmiter) = "clickedRegion = null" (closeEmiter2) = "clickedShowFunFacts = true;"
- (closeEmiter3) = "clickedShowComments = true;"></app-region-dialog>
-<app-fun-facts *ngIf = "clickedShowFunFacts == true" (closeEmiter) = "clickedShowFunFacts = false; clickedRegion = null;" [regionName] = "clickedRegion"></app-fun-facts>
+<app-region-dialog *ngIf = "clickedRegion != null && isAdminUser == false && isUnlockedRegion() == true && clickedRegionDialog == true" [regionName] = "clickedRegion" (closeEmiter) = "clickedRegion = null" (closeEmiter2) = "clickedShowFunFacts = true; clickedRegionDialog = false; randomFja();"
+ (closeEmiter3) = "clickedShowComments = true; clickedRegionDialog = false"></app-region-dialog>
+<app-fun-facts *ngIf = "clickedShowFunFacts == true" [regionName] = clickedRegion></app-fun-facts>
+<app-comments-display *ngIf = "clickedShowComments == true" (closeEmitter) = "clickedShowComments = false" [regionName] = "clickedRegion"></app-comments-display>
+<app-quiz-component *ngIf = "clickedRegion != null && isAdminUser == false && isUnlockedRegion() == false" [regionName] = "clickedRegion"  (closeEmitter) = "clickedRegion = null"> </app-quiz-component>
 <!-- izabran je fun fac-->
 <!-- izabran kom-->
 <!-- kviz -->

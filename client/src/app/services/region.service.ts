@@ -1,4 +1,5 @@
 import { Region } from './../models/region.model';
+import { Comment } from './../models/comment.model'
 import { User } from './../models/user.model';
 import { UserService } from './../services/user.service'
 import { Question } from './../models/question.model';
@@ -26,6 +27,24 @@ export class RegionService {
   public getRegionFacts(regionName : string) {
     console.log(regionName);
     return this.http.get<Region>(this.regionLink + "getRegionFacts?regionName=" + regionName);
+  }
+
+  public getRegionComments(regionName : string) {
+    return this.http.get<any>(this.regionLink + "getRegionComments?regionName=" + regionName)
+  }
+
+  public sendRegionComment (regionName : string, uname: string, comment : string) {
+    let body = {
+        regionName : regionName,
+        uname : uname,
+        comment : comment
+    }
+    
+    return this.http.post<any>(this.regionLink + "addComment", body)
+  }
+
+  public getRegionQuestion (regionName: string) {
+      return this.http.get<Question>(this.regionLink + "getRegionQuestion?regionName=" + regionName)
   }
 
   public openRegionDialog(regionName : string) {

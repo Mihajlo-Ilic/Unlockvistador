@@ -1,0 +1,34 @@
+<div class="ui-grid">
+    <div class="four wide column">
+      <div class="ui card">
+        <div class="content">
+          <a class="header"></a>
+        </div>
+      </div>
+    </div>
+    <div class="twelve wide column">
+      <button class="ui button" type="" (click)="close()">Exit</button>
+
+      <form class="ui form" [formGroup] = "checkForm" class = "card-body" (ngSubmit) = "sendComment(checkForm.value)">
+      <button class="ui button" type="submit">Dodajte komentar</button>
+      <input type="text" name="commentInput" formControlName="commentInput">
+      </form>
+      <div id="display">
+        <table style="width: 100%; border:brown 1px solid">
+          <thead id="display-header">
+            <tr>
+              <th>Korisnik</th>
+              <th>Komentar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let comment of comments">
+              <td>{{comment.username}}</td>
+              <td>{{comment.comment}}</td>
+            </tr>
+          </tbody>
+            
+        </table>
+      </div>
+    </div>
+  </div>
