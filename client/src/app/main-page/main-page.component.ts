@@ -19,23 +19,39 @@ export class MainPageComponent implements OnInit {
     clickedShowFunFacts = false;
     clickedRegionDialog = false;
 
+
+
     currentUser = null;
     isAdminUser = false;
     unlockedRegions = []
+
+    regionsArray = ["Banat","Backa","Srem","Nisava","Beograd","Raska","Istok","Sumadija","Kosovo"];
 
 
   	constructor(private rout : ActivatedRoute, private regionService : RegionService, private userService : UserService) {
       this.currentUser = this.userService.currentUser;
       this.isAdminUser = this.currentUser.admin;
       this.unlockedRegions = this.currentUser.unlockedRegions
+
       console.log(this.currentUser);
       console.log(this.isAdminUser);
       console.log(this.unlockedRegions);
     }
 
   	ngOnInit(): void {
+      this.initalizeMap();
   	}
 
+    public initalizeMap() : void {
+      for(let i = 0; i < this.regionsArray.length; i++) {
+        for(let j = 0; j < this.unlockedRegions.length; j++) {
+          if(this.regionsArray[i] == this.unlockedRegions[j]) {
+            const el = document.getElementById(this.regionsArray[i] + "ID");
+            el.setAttribute("style","fill:url(#diagonalHatch" + this.regionsArray[i]);
+          }
+        }
+      }
+    }
 
     public isUnlockedRegion() {
       for(let i = 0; i < this.unlockedRegions.length; i++) {
