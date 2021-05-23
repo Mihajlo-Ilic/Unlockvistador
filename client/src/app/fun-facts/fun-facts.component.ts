@@ -31,6 +31,7 @@ export class FunFactsComponent implements OnInit {
 
   close() : void {
     console.log("Iz klose emitera: " + this.regionPicture);
+    console.log("LOOOOOOOOOOOOOG");
     this.closeEmiter.emit(true);
   }
 
