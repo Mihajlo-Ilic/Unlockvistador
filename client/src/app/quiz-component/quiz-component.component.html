@@ -13,8 +13,13 @@
                 {{question.text}}
             </h3>
         </div>
+        <span>
+          Preostalo pokusaja: {{triesRemaining}}
+          <br>
+          Tacnih odgovora do otkljucavanja: {{answersRemaining}}
+        </span>
         <fieldset *ngFor = "let answer of displayAnswers">
-            <button type="button" (click) = "checkAnswer(answer)">
+            <button type="button" (click) = "checkAnswer(answer)" [id] = "answer">
                 {{answer}}
             </button>
         </fieldset>

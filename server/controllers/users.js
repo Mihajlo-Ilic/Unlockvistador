@@ -238,34 +238,38 @@ module.exports.findUser = async(req, res, next) => {
 module.exports.addRegionForUser = async(req, res, next) => {
     try {
         const email = req.body.email;
-        const user = await User.findOne({
+        let user = await User.findOne({
             email: email
         });
 
         if (!user) {
-            res.send("User not found").status(404);
+            return res.status(404).json("User not found!");
         }
 
-        const newRegion = await Regions.findById(req.body.id);
-        for (let i = 0; i < user.unlockedRegions.length; i++) {
-            if (user.unlockedRegions[i].id == req.body.id) {
-                res.status(409).send("Region already added.");
-                return;
-            }
-        }
-        await user.updateOne(
-            {
-                $push: {
-                    unlockedRegions: {
-                        name: newRegions.name,
-                        id: newRegions._id,
-                        locked: false
-                    }
-                }
-            }
-        );
+        const regionName = req.body.regionName;
+        //proveravamo da li je region validan da ne dodajemo neku glupost u bazu
+        const region = await Regions.findOne({
+            name: regionName
+        });
 
-        res.json(user).status(200);
+        if(!region) {
+            return res.status(404).json("Region not found!");
+        }
+
+        let unlockedRegionsUpd = user.unlockedRegions
+        if(!unlockedRegionsUpd.includes(regionName))
+            unlockedRegionsUpd.push(regionName)
+        else {
+            return res.status(200).json("Region already added")
+        }
+
+        let update = {unlockedRegions : unlockedRegionsUpd}
+
+        user = await User.findOneAndUpdate({email : email}, update, {
+            new: true
+        });
+
+        return res.json(user).status(200);
 
     } catch (error) {
         next(error);

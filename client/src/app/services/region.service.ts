@@ -13,7 +13,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 export class RegionService {
 
   regionLink = "http://localhost:3000/regions/";
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private userService : UserService) { }
 
   public addQuestion(regionName : string ,text: string, answer : string, false_answer1 : string,
     false_answer2 : string,false_answer3 : string,false_answer4 : string,false_answer5 : string,false_answer6 : string) {
@@ -47,7 +47,5 @@ export class RegionService {
       return this.http.get<Question>(this.regionLink + "getRegionQuestion?regionName=" + regionName)
   }
 
-  public openRegionDialog(regionName : string) {
-    //return this.http.get<any>(this.regionLink + regionName)
-  }
+
 }

@@ -45,9 +45,14 @@ export class UserService {
   }
 
   //dodavanje novog regiona = izmena kod user-a
-  public addRegion(uid, region) {
-    this.http.post(this.userLink + "regions/" + uid, region);
-    return this.http.post<any>(this.userLink + "regions/" + uid, region);
+  public addRegion(email, regionName) {
+    //this.http.post(this.userLink + "regions/" + uid, region);
+    //return this.http.post<any>(this.userLink + "regions/" + uid, region);
+    let body = {
+        email: email,
+        regionName : regionName
+    }
+    return this.http.patch<any>(this.userLink + "addRegion", body)
   }
 
   public getCurrentUser(): User {

@@ -78,7 +78,7 @@ module.exports.getRegionQuestion = async (req, res, next) => {
         next(err)
     }
 }
-
+/*
 module.exports.getRegion = async (req, res, next) => {
     try {
         const regionName = req.params.region_name;
@@ -144,7 +144,7 @@ module.exports.getRegion = async (req, res, next) => {
         console.log(error)
         next(error)
     }
-}
+}*/
 
 module.exports.addComment = async(req, res, next) => {
     //console.log("Primljen komentar " + req.body.comment + "za oblast " + req.body.regionName + "od korisnika " + req.body.uname)

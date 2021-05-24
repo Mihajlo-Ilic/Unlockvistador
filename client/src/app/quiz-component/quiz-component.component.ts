@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import {Question} from '../models/question.model'
 import { RegionService } from '../services/region.service';
+import {UserService} from '../services/user.service';
+
 
 @Component({
   selector: 'app-quiz-component',
@@ -13,9 +15,13 @@ export class QuizComponentComponent implements OnInit {
   @Input() regionName : string;
   @Output() closeEmitter = new EventEmitter<boolean>();
   public question : Question;
-  public displayAnswers: string[]
+  public displayAnswers: string[];
+  public answersRemaining : number;
+  public triesRemaining : number;
 
-  constructor(private regionService : RegionService) {
+  constructor(private regionService : RegionService, private userService : UserService) {
+    this.answersRemaining = 5
+    this.triesRemaining = 3
    }
 
 
@@ -30,6 +36,8 @@ export class QuizComponentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.triesRemaining = 3;
+    this.answersRemaining = 5;
     //dohvati pitanje; odaberi tacan odgovor i 3 nasumicna netacna
     this.populateFields()
   }
@@ -62,8 +70,40 @@ export class QuizComponentComponent implements OnInit {
   }
 
   public checkAnswer(answer : string) {
-      console.log(this.question.answer === answer);
-      //TODO: dodati ovde celu funkcionalnost
+      //console.log(this.question.answer === answer);
+    let correct = this.question.answer === answer;
+    let el = document.getElementById(answer)
+    if(correct){
+      this.answersRemaining --;
+      el.setAttribute("style", "background-color: green")
+    }
+    else {
+      this.triesRemaining --;
+      el.setAttribute("style", "background-color: red")
+    }
+
+    setTimeout(() => {
+      if(this.triesRemaining === 0) {
+          window.alert("Ponestalo Vam je zivota za ovu regiju! Pokrenite novi kviz...")
+          this.close()
+          return;
+      }
+
+      if(this.answersRemaining > 0) {
+        this.populateFields()
+      }
+      else {
+        //otkljucavanje regije
+        this.userService.addRegion(this.userService.currentUser.email, this.regionName).subscribe(e => {
+          window.alert("Otkljucali ste region " + this.regionName);
+          this.userService.currentUser.unlockedRegions.push(this.regionName);
+          this.close()
+          return;
+        })
+      }
+
+      el.setAttribute("style", "background-color: white")
+    }, 1000)
   }
 
   public close() {
