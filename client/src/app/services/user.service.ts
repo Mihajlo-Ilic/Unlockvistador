@@ -60,7 +60,6 @@ export class UserService {
   }
 
   public putCurrentUser(user: User) {
-    //this.currentUser = user;
     this.currentUser = user;
     console.log(this.currentUser);
   }

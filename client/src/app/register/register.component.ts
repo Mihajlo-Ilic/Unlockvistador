@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   public user: User[];
   public checkForm: FormGroup;
 
-  private userSub: Subscription;
+  private userSub: Subscription[];
 
   selectedFile: File = null;
 
@@ -29,9 +29,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private router: Router,
     private http: HttpClient) {
+    this.userSub = [];
     this.checkForm = formBuilder.group({
-      firstName: ['', [Validators.required, Validators.pattern('[A-Z][a-z]+')]],
-      lastName: ['', [Validators.required, Validators.pattern('([A-Z][a-z]+)+')]],
+      name: ['', [Validators.required, Validators.pattern('[A-Z][a-z]+')]],
+      lastname: ['', [Validators.required, Validators.pattern('([A-Z][a-z]+)+')]],
       email: ['', [Validators.required, Validators.email]],
       username: ['', [Validators.required, Validators.pattern('[_a-zA-Z0-9]+')]],
       password: ['', [Validators.required, Validators.pattern('[a-zA-Z]+[0-9]+')]],
@@ -46,11 +47,11 @@ export class RegisterComponent implements OnInit, OnDestroy {
     return this.checkForm.get('email');
   }
 
-  public get firstName() {
-    return this.checkForm.get('firstName');
+  public get name() {
+    return this.checkForm.get('name');
   }
-  public get lastName() {
-    return this.checkForm.get('lastName');
+  public get lastname() {
+    return this.checkForm.get('lastname');
   }
 
   public get password() {
@@ -84,10 +85,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
       "email": data.email,
       // "image" : data.image
     }
-    this.userSub = this.userService.addUser(body).subscribe((user: User) => {
-      console.log("Uspesno ste registrovani! ");
+    const uSub = this.userService.addUser(body).subscribe((user: User) => {
       this.userService.putCurrentUser(user);
     });
+    this.userSub.push(uSub);
 
     this.checkForm.reset();
     this.router.navigate(['/succReg', data.username]);
@@ -117,7 +118,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy() {
-    this.userSub.unsubscribe();
+    this.userSub.forEach((sub) => sub.unsubscribe());
   }
 
 }

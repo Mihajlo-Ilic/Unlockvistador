@@ -33,6 +33,7 @@ module.exports.authenticateUser = (req,res,next) => {
 
 
 module.exports.addNewUser = async(req, res, next) => {
+    console.log("Add user")
     try {
         console.log("Enter signin server");
         let image = '';
@@ -55,7 +56,9 @@ module.exports.addNewUser = async(req, res, next) => {
         const user = await User.findOne({
             email: req.body.email
         });
+        console.log("User Info" + user)
         if (!user) {
+            console.log("User: " + user)
             bcrypt.hash(req.body.password, 10, (_err, hash) => {
                 newUser.password = hash;
                 User.create(newUser)
