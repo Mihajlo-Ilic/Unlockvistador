@@ -44,12 +44,15 @@ export class MainPageComponent implements OnInit {
 
     public initalizeMap() : void {
       for(let i = 0; i < this.regionsArray.length; i++) {
+        const el = document.getElementById(this.regionsArray[i] + "ID");
+        let isUnlocked = false;
         for(let j = 0; j < this.unlockedRegions.length; j++) {
           if(this.regionsArray[i] == this.unlockedRegions[j]) {
-            const el = document.getElementById(this.regionsArray[i] + "ID");
-            el.setAttribute("style","fill:url(#diagonalHatch" + this.regionsArray[i]);
+            isUnlocked = true;
           }
         }
+        if(isUnlocked == false)
+          el.setAttribute("style","fill:url(#diagonalHatch" + this.regionsArray[i]);
       }
     }
 

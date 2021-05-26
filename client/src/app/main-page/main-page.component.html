@@ -1,43 +1,81 @@
 <mat-grid-list cols="5" class="page">
     <mat-grid-tile [colspan]="2" [rowspan]="1" class="gridInfo">Ime i Prezime</mat-grid-tile>
     <mat-grid-tile [colspan]="3" [rowspan]="3" [ngStyle]="{'background-image' : 'url(./assets/images/main_page_background_part.png)'}" class="grid_main">
-                    <svg class = "serbia" width="568" height="739" tabindex="1">
+                    <svg class = "serbia" width="568" height="739">
                         <!--G : Backa-->
-                    <polygon class = "province" points="28,51,86,31,112,8,159,15,159,148,172,163,142,155,63,155,42,148" style="fill: url(#gradBacka);background-color:green"
+
+                    <polygon class = "province" points="28,51,86,31,112,8,159,15,159,148,172,163,142,155,63,155,42,148" z-index = "1" style="fill: url(#gradBacka);background-color:green"
                     (click)="clickHandlerBacka()"
-                    id = "BackaID"/>
+                    id = "BackaID"
+                    title = "Backa"/>
+                    <text class="text-cta" z-index="2" x="65" y="110"fill = "rgb(255, 253, 208)" font-family = "Papyrus" font-size="30" opacity = "1" font-style = "italic">
+                        Bačka
+                    </text>
+
                         <!--G : Banat -->
                     <polygon class = "province" points="183,19,254,134,327,178,333,217,311,233,230,245,194,187,159,149,159,15" style="fill: url(#gradBanat)"
                     (click)="clickHandlerBanat()"
-                    id = "BanatID"/>
+                    id = "BanatID"
+                    title = "Banat"/>
+                    <text class="text-cta" z-index="2" x="195" y="170"fill = "rgb(255, 253, 208)" font-family = "Papyrus" font-size="30" opacity = "1" font-style = "italic">
+                      Banat
+                    </text>
                         <!--G: Srem-->
                     <polygon class = "province" points="61,155,142,155,172,163,194,187,137,198,142,221,80,215,37,218,41,176,88,164" style="fill: url(#gradSrem)"
                     (click)="clickHandlerSrem()"
-                    id = "SremID"/>
+                    id = "SremID"
+                    title = "Srem"/>
+                    <text class="text-cta" z-index="2" x="75" y="200"fill = "rgb(255, 253, 208)" font-family = "Papyrus" font-size="28" opacity = "1" font-style = "italic">
+                      Srem
+                    </text>
                         <!--G: Beograd-->
                     <polygon class = "province" points="65,254,80,215,142,221,137,198,194,187,230,245,234,272" style="fill: url(#gradBeograd);fill-rule:nonzero"
                     (click)="clickHandlerBeograd()"
-                    id = "BeogradID"/>
+                    id = "BeogradID"
+                    title = "Beograd i Mačva"/>
+                    <text class="text-cta" z-index="2" x="95" y="250"fill = "rgb(255, 253, 208)" font-family = "Papyrus" font-size="26" opacity = "1" font-style = "italic">
+                      Beograd
+                    </text>
                         <!--G: Ist. Srbija-->
                     <polygon class = "province" points="305,420,251,372,229,245,311,233,383,260,400,287,434,247,474,271,440,286,465,314,465,325,429,364,428,413,308,413" style="fill: url(#gradIstok);fill-rule:nonzero"
                     (click)="clickHandlerIstok()"
-                    id = "IstokID"/>
+                    id = "IstokID"
+                    title ='Istočna Srbija' />
+                    <text class="text-cta" z-index="2" x="260" y="340"fill = "rgb(255, 253, 208)" font-family = "Papyrus" font-size="30" opacity = "1" font-style = "italic">
+                      Istočna Srbija
+                    </text>
                         <!--G: Sumadija -->
                     <polygon class = "province" points="106,358,53,314,53,279,65,254,234,271,251,372,305,420,295,444" style="fill: url(#gradSumadija);fill-rule:nonzero"
                     (click)="clickHandlerSumadija()"
-                    id = "SumadijaID"/>
+                    id = "SumadijaID"
+                    title = "Šumadija" />
+                    <text class="text-cta" z-index="2" x="115" y="340"fill = "rgb(255, 253, 208)" font-family = "Papyrus" font-size="30" opacity = "1" font-style = "italic">
+                      Šumadija
+                    </text>
                         <!--G: Nisava -->
                     <polygon class = "province" points="374,652,380,581,338,562,343,546,279,483,308,412,428,413,507,500,440,560,444,628" style="fill: url(#gradNisava);fill-rule:nonzero"
                     (click)="clickHandlerNisava()"
-                    id = "NisavaID"/>
+                    id = "NisavaID"
+                    title = "Jugoistočna Srbija"/>
+                    <text class="text-cta" z-index="2" x="295" y="495"fill = "rgb(255, 253, 208)" font-family = "Papyrus" font-size="26" opacity = "1" font-style = "italic">
+                      Jugoistočna Srbija
+                    </text>
                         <!--G: Raska -->
                     <polygon class = "province" points="50,449,61,429,89,437,92,412,66,366,106,358,295,444,279,484,256,488,216,526,221,539,185,546" style="fill: url(#gradRaska);fill-rule:nonzero"
                     (click)="clickHandlerRaska()"
-                    id = "RaskaID"/>
+                    id = "RaskaID"
+                    title = "Raška"/>
+                    <text class="text-cta" z-index="2" x="145" y="460"fill = "rgb(255, 253, 208)" font-family = "Papyrus" font-size="30" opacity = "1" font-style = "italic">
+                      Raška
+                    </text>
                         <!--G: Kosovo i Metohija -->
                     <polygon class = "province" points="217,724,221,703,155,597,150,566,173,568,185,546,221,539,216,526,256,488,279,483,343,546,338,562,380,581,374,652,303,677,286,658,239,685,243,712" style="fill: url(#gradKosovo);fill-rule:nonzero"
                     (click)="clickHandlerKosovo()"
-                    id = "KosovoID"/>
+                    id = "KosovoID"
+                    title="Kosovo i Metohija"/>
+                    <text class="text-cta" z-index="2" x="165" y="605"fill = "rgb(255, 253, 208)" font-family = "Papyrus" font-size="28" opacity = "1" font-style = "italic">
+                      Kosovo i Metohija
+                    </text>
                         <!--G: Treba da se dodaju ostali regioni koji su na mapi!-->
 
 
@@ -146,6 +184,7 @@
                     </defs>
 
                     </svg>
+
     </mat-grid-tile>
     <mat-grid-tile [colspan]="2" [rowspan]="2">Informacije o pitanjeima</mat-grid-tile>
 
