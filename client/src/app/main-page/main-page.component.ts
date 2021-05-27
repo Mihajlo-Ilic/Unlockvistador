@@ -19,9 +19,6 @@ export class MainPageComponent implements OnInit {
     clickedShowFunFacts = false;
     clickedRegionDialog = false;
     finishedQuiz = false;
-
-
-
     currentUser = null;
     isAdminUser = false;
     unlockedRegions = []
@@ -67,6 +64,15 @@ export class MainPageComponent implements OnInit {
         }
       }
       return false;
+    }
+    public showBadge(regionName: string){
+  	  const pathToImage = './assets/images/' + regionName + '.png';
+      for(let i = 0; i < this.unlockedRegions.length; i++) {
+        if(this.unlockedRegions[i] === regionName) {
+          return pathToImage;
+        }
+      }
+     return '';
     }
 
     public clickHandlerBanat() {

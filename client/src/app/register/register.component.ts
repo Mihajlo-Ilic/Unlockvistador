@@ -83,7 +83,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       "name": data.name,
       "lastname": data.lastname,
       "email": data.email,
-      // "image" : data.image
+      "image" : data.image
     }
     const uSub = this.userService.addUser(body).subscribe((user: User) => {
       this.userService.putCurrentUser(user);

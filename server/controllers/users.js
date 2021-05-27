@@ -11,9 +11,10 @@ const bcrypt = require("bcrypt");
 //not directly used by router, but each request for data that requires authentication 
 //needs to pass through this function first
 module.exports.authenticateUser = (req,res,next) => {
+    console.log("Inside login function")
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1]
-    
+    console.log("Toke: " + token)
     if(!token) {
         //there is no token/authorization header
         return res.status(402)   
@@ -40,7 +41,7 @@ module.exports.addNewUser = async(req, res, next) => {
         if (req.file) {
             image = req.file.filename;
         } else {
-            image = '../../client/pictures/defaultIcon.png';
+            image = '../../client/src/assets/images/defaultIcon.png';
         }
         const newUser = {
             _id: new mongoose.Types.ObjectId,
@@ -133,8 +134,8 @@ module.exports.authUser = async(req, res, next) => {
             console.log("Provera sifre")
             let user = users[0]
             //temporarily pausing password encoding for testing purposes
-            //let isPasswordCorrect = await bcrypt.compare(pswd, user.password)
-            let isPasswordCorrect = (pswd === user.password)
+            let isPasswordCorrect = await bcrypt.compare(pswd, user.password)
+            //let isPasswordCorrect = (pswd === user.password)
             if(isPasswordCorrect) {
                console.log("Sifra odgovarajuca")
                //Not sure if this is still neccessary since we're using JWT tokens

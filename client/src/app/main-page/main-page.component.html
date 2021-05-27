@@ -1,6 +1,42 @@
-<mat-grid-list cols="5" class="page">
-    <mat-grid-tile [colspan]="2" [rowspan]="1" class="gridInfo">Ime i Prezime</mat-grid-tile>
-    <mat-grid-tile [colspan]="3" [rowspan]="3" [ngStyle]="{'background-image' : 'url(./assets/images/main_page_background_part.png)'}" class="grid_main">
+<mat-grid-list cols="6" class="page" rowHeight="2:1">
+    <mat-grid-tile [colspan]="2" [rowspan]="6" class="userInfo" >
+      <mat-card class="profile" [ngStyle]="{'background-color' : 'transparent', 'font-family': 'Goudy Old Style'}">
+        <mat-card-header class="user-info-header">
+          <div mat-card-avatar class="profile-image" [ngStyle]="{'background' : 'url(./assets/images/defaultIcon.png)'}"></div>
+          <mat-card-title> {{currentUser.name}} {{currentUser.lastname}} </mat-card-title>
+          <mat-card-subtitle>
+            Username: {{currentUser.username}}
+            <br/>
+            Email: {{currentUser.email}}
+          </mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content class="info-content">
+          Otkljucane regije:
+
+          <div class="unlocked-regions-badges">
+            <div id="d1" style="display:inline-block; width:100px;"> <img [src]="showBadge('Backa')"></div>
+            <div id="d1" style="display:inline-block; width:100px;"> <img [src]="showBadge('Srem')" ></div>
+            <div id="d1" style="display:inline-block; width:100px;"> <img [src]="showBadge('Banat')" ></div>
+            <br/>
+            <div id="d2" style="display:inline-block; width:100px;"> <img [src]="showBadge('Beograd')" > </div>
+            <div id="d2" style="display:inline-block; width:100px;"> <img [src]="showBadge('Sumadija')"> </div>
+            <div id="d2" style="display:inline-block; width:100px;"> <img [src]="showBadge('Istok')"> </div>
+            <br/>
+            <div id="d3" style="display:inline-block; width:100px;"> <img [src]="showBadge('Raska')" > </div>
+            <div id="d3" style="display:inline-block; width:100px;"> <img [src]="showBadge('Nisava')" > </div>
+            <div id="d3" style="display:inline-block; width:100px;"> <img [src]="showBadge('Kosovo')"> </div>
+          </div>
+
+        </mat-card-content>
+
+        <mat-card-footer>
+          <button class="logOut" mat-raised-button> Odjavi se </button>
+        </mat-card-footer>
+      </mat-card>>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="4" [rowspan]="6" [ngStyle]="{'background-image' : 'url(./assets/images/main_page_background_part.png)'}" class="grid_main">
                     <svg class = "serbia" width="568" height="739">
                         <!--G : Backa-->
 
@@ -186,7 +222,6 @@
                     </svg>
 
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="2" [rowspan]="2">Informacije o pitanjeima</mat-grid-tile>
 
 </mat-grid-list>
 <app-model-for-adding-questions *ngIf = "clickedRegion != null && isAdminUser == true" (closeEmiter) = "clickedRegion = null" [regionName] = "clickedRegion" [localUserName] = "localUserName"></app-model-for-adding-questions>
