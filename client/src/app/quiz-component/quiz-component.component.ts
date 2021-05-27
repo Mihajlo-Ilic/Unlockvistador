@@ -102,7 +102,7 @@ export class QuizComponentComponent implements OnInit {
         })
       }
 
-      el.setAttribute("style", "background-color: white")
+      el.setAttribute("style", "background-color: rgba(255, 228, 196, 0.4);")
     }, 1000)
   }
 

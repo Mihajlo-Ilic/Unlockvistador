@@ -24,7 +24,7 @@ export class FunFactsComponent implements OnInit {
   ngOnInit(): void {
     const sub = this.regionService.getRegionFacts(this.regionName).subscribe(e => {
       this.funFact = e.fact;
-      this.regionPicture = "./assets/images/region/" + e.picture +".jpg";
+      this.regionPicture = "../../assets/images/region/" + e.picture +".jpg";
       console.log(this.regionPicture);
     });
   }

@@ -43,6 +43,8 @@ export class MainPageComponent implements OnInit {
   	}
 
     public initalizeMap() : void {
+      this.unlockedRegions = this.currentUser.unlockedRegions
+      console.log(this.unlockedRegions)
       for(let i = 0; i < this.regionsArray.length; i++) {
         const el = document.getElementById(this.regionsArray[i] + "ID");
         let isUnlocked = false;

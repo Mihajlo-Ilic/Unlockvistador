@@ -194,7 +194,7 @@
  (closeEmiter3) = "clickedShowComments = true; clickedRegionDialog = false"></app-region-dialog>
 <app-fun-facts *ngIf = "clickedShowFunFacts == true" [regionName] = clickedRegion (closeEmiter) = "clickedShowFunFacts = false" ></app-fun-facts>
 <app-comments-display *ngIf = "clickedShowComments == true" (closeEmitter) = "clickedShowComments = false" [regionName] = "clickedRegion"></app-comments-display>
-<app-quiz-component *ngIf = "clickedRegion != null && isAdminUser == false && isUnlockedRegion() == false" [regionName] = "clickedRegion"  (closeEmitter) = "clickedRegion = null; initializeMap()"> </app-quiz-component>
+<app-quiz-component *ngIf = "clickedRegion != null && isAdminUser == false && isUnlockedRegion() == false" [regionName] = "clickedRegion"  (closeEmitter) = "clickedRegion = null; initalizeMap();"> </app-quiz-component>
 <style>
 
 </style>
