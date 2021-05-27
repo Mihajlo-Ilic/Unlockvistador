@@ -69,13 +69,13 @@
   "_id": {
     "$oid": "607943ff59b8a11ef5e904d5"
   },
-  "name": "Nis",
+  "name": "Nisava",
   "facts": [
     "Ime grada Niša može se naći u mnogobrojnim istorijskim izvorima iz perioda srednjeg veka do savremenog doba (Naissus, Nais, Nisus, Nissa...)",
     "Pored Carigrada, Sofije, Nikeje...Konstantin Veliki(koji je bio rodjen u Naisusu) je hteo da proglasi Niš za novu prestonicu Rimskog carstva, ali Vizantion je bio na boljoj lokaciji",
     "Ćele kula je nastala nakon prvog srpskog ustanka kada su Turci podigli mauzolej od lobanja pobunjenika."
   ],
-  "image" : ["Nis1", "Nis2","Nis3"]
+  "image" : ["Nisava1", "Nisava2","Nisava3"]
 },{
   "_id": {
     "$oid": "6079462559b8a11ef5e904d6"

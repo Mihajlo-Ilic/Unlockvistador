@@ -20,18 +20,18 @@ export class FunFactsComponent implements OnInit {
   }
 
 
-
+// style = "background-image: url('../../assets/images/unnamed.png');"
   ngOnInit(): void {
     const sub = this.regionService.getRegionFacts(this.regionName).subscribe(e => {
       this.funFact = e.fact;
-      this.regionPicture = "../../assets/images/region/" + e.picture +".jpg";
-      console.log(this.regionPicture);
+      this.regionPicture = e.picture;
+      console.log(e.picture);
+      let elem = document.getElementById("ui-grid");
+      elem.setAttribute("style", "background-image: url('../../assets/images/region/" +  this.regionPicture +".jpg');");
     });
   }
 
   close() : void {
-    console.log("Iz klose emitera: " + this.regionPicture);
-    console.log("LOOOOOOOOOOOOOG");
     this.closeEmiter.emit(true);
   }
 

@@ -268,6 +268,7 @@ module.exports.getRegionFacts = async(req, res, next) => {
                 let numOfPictures = region.image.length;
                 randomNum = Math.floor(numOfPictures * Math.random())
                 let msg2 = region.image[randomNum]
+                console.log("UZELI SMO SLIKU: " + msg2)
                 res.json({fact : msg, picture : msg2}).status(200);
             }     
     } catch (error) {
