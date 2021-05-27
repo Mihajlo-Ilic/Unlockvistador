@@ -16,7 +16,7 @@ export class RegionDialogComponent implements OnInit {
   @Output() closeEmiter3 = new EventEmitter<boolean>();
 
   constructor() {
-      
+
   }
 
   public close() : void {

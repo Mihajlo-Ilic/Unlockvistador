@@ -18,6 +18,7 @@ export class MainPageComponent implements OnInit {
     clickedShowComments = false;
     clickedShowFunFacts = false;
     clickedRegionDialog = false;
+    finishedQuiz = false;
 
 
 
@@ -51,6 +52,7 @@ export class MainPageComponent implements OnInit {
         for(let j = 0; j < this.unlockedRegions.length; j++) {
           if(this.regionsArray[i] == this.unlockedRegions[j]) {
             isUnlocked = true;
+            el.setAttribute("style","fill:url(#grad" + this.regionsArray[i]);
           }
         }
         if(isUnlocked == false)
@@ -113,6 +115,6 @@ export class MainPageComponent implements OnInit {
       this.clickedRegionDialog = true;
     }
     public randomFja() : void {
-      console.log(this.clickedShowFunFacts);
+      console.log(this.finishedQuiz);
     }
 }

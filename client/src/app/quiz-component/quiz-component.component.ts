@@ -14,6 +14,7 @@ export class QuizComponentComponent implements OnInit {
 
   @Input() regionName : string;
   @Output() closeEmitter = new EventEmitter<boolean>();
+  @Output() closeEmitter2 = new EventEmitter<boolean>();
   public question : Question;
   public displayAnswers: string[];
   public answersRemaining : number;
@@ -31,7 +32,7 @@ export class QuizComponentComponent implements OnInit {
       const tmp = array[i]
       array[i] = array[j]
       array[j] = tmp
-  }  
+  }
     return array
   }
 
@@ -42,7 +43,7 @@ export class QuizComponentComponent implements OnInit {
     this.populateFields()
   }
 
-  //Dodati neki osluskivac kada ova funkcija treba da se zove; 
+  //Dodati neki osluskivac kada ova funkcija treba da se zove;
   public populateFields() {
     this.regionService.getRegionQuestion(this.regionName).subscribe( e => {
       this.question = new Question(e._id, e.region, e.text, e.answer, e.false_answer1,
@@ -52,11 +53,11 @@ export class QuizComponentComponent implements OnInit {
     this.displayAnswers = []
     //mora se naci tacan odgovor
     this.displayAnswers.push(this.question.answer)
-    let false_answers = [this.question.false_answer1, this.question.false_answer2, this.question.false_answer3, 
+    let false_answers = [this.question.false_answer1, this.question.false_answer2, this.question.false_answer3,
       this.question.false_answer4, this.question.false_answer5, this.question.false_answer6]
     //nasumicna 3 pogresna odgovora
     let idxs = Array.from({length : 6}, (x, i) => i);
-    
+
     //Fisher-Yates algoritam za ispremestanje niza
     idxs = this.shuffle(idxs)
 
@@ -95,11 +96,10 @@ export class QuizComponentComponent implements OnInit {
       else {
         //otkljucavanje regije
         this.userService.addRegion(this.userService.currentUser.email, this.regionName).subscribe(e => {
-          window.alert("Otkljucali ste region " + this.regionName);
           this.userService.currentUser.unlockedRegions.push(this.regionName);
-          this.close()
-          return;
-        })
+          this.close2();
+        });
+
       }
 
       el.setAttribute("style", "background-color: rgba(255, 228, 196, 0.4);")
@@ -108,6 +108,11 @@ export class QuizComponentComponent implements OnInit {
 
   public close() {
       this.closeEmitter.emit(true)
+  }
+
+  public close2() {
+    this.closeEmitter2.emit(true);
+    console.log("DOBIO SAM KVIZ")
   }
 
 }

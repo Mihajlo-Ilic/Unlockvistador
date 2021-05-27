@@ -25,6 +25,7 @@ import { RegionDialogComponent } from './region-dialog/region-dialog.component';
 import { FunFactsComponent } from './fun-facts/fun-facts.component';
 import { CommentsDisplayComponent } from './comments-display/comments-display.component';
 import { QuizComponentComponent } from './quiz-component/quiz-component.component';
+import { FinishedQuizComponent } from './finished-quiz/finished-quiz.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { QuizComponentComponent } from './quiz-component/quiz-component.componen
     RegionDialogComponent,
     FunFactsComponent,
     CommentsDisplayComponent,
-    QuizComponentComponent
+    QuizComponentComponent,
+    FinishedQuizComponent
   ],
   imports: [
     BrowserModule,
