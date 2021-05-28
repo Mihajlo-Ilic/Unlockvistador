@@ -1,34 +1,50 @@
 form {
-    width: 500px;
-    height: 500px;
-    border-color: whitesmoke;
-    border-style: outset;
-    border-radius: 20px;
-    border-width: 3px;
-    box-shadow: 2px 5px black;
-    position: fixed;
-    top: 20%;
-    left: 50%;
-    margin-top: -100px;
-    margin-left: -300px;
-    text-align: center;
-    font-family:  "Goudy Old Style", sans-serif; 
+  width: 500px;
+  height: 500px;
+  border-color: whitesmoke;
+  border-style: outset;
+  border-radius: 20px;
+  border-width: 3px;
+  box-shadow: 2px 5px black;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -300px;
+  text-align: center;
+  font-family:  "Goudy Old Style", sans-serif;
 }
 mat-card-title {
-    font-size: 50px;
+  font-size: 50px;
 }
 mat-form-field {
-    font-size: 20px;
-    text-align: center;
-    border-width: 3px;
-    border-color: black;
+  font-size: 20px;
+  text-align: center;
+  border-width: 3px;
+  border-color: black;
 }
 mat-card-actions {
-    
-    text-align: center;
-    top: 30%;
+
+  text-align: center;
+  top: 30%;
 }
 .input {
-    border-color: black;
-    border-width: 3px;
+  border-color: black;
+  border-width: 3px;
+}
+.btn-lg {
+  height: 80px;
+  width: 150px;
+  font-size: 30px;
+  background-color: transparent;
+  margin: 20px 20px 20px 20px;
+  font-weight: bold;
+  border-style: outset;
+  border-radius: 20px;
+  border-width: 3px;
+  box-shadow: 2px 5px black;
+  size: 5vw;
+}
+.btn-lg:hover {
+  background-color: whitesmoke;
 }
