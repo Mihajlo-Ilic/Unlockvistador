@@ -2,6 +2,17 @@
 
 Interaktivna mapa Srbije koja ima podršku za korisničke naloge u kojima će korisnici odgovaranjem pitanja o Srbiji, iz određenih oblasti, otkljucavati deo po deo regiona i tako dobijati zanimljivosti vezane za specifični region. Takođe postojaće i opcija da korisnici unose svoja iskustva iz određenih regiona.
 
+## Korišćene tehnologije
+- razvojno okruženje Angular
+- Node.js
+- express.js
+- MongoDB baza podataka
+
+##Uputstvo za pokretanje
+- Pozicionirati se u direktorijum **client** i pokrenuti **npm install**. Zatim, za pokretanje aplikacije pokrenuti **ng serve**
+- U posebnom terminalu se pozicionirati u direktorijum **server** i pokrenuti komandu **node server.js**
+- Lokalno napraviti konekciju na MongoDB na adresi **localhost:27017**, napraviti bazu nazvanu **Unlockivstador** i učitati kolekcije uz pomoć JSON datoteka u direktorijumu **server/database_data**
+
 ## Developers
 
 - [Darinka Nešović, 356/2020](https://gitlab.com/Dara1994)
