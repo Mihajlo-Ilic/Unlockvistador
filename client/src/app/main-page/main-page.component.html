@@ -1,233 +1,101 @@
-<mat-grid-list cols="6" class="page" rowHeight="2:1">
-    <mat-grid-tile [colspan]="2" [rowspan]="6" class="userInfo" >
-      <mat-card class="profile" [ngStyle]="{'background-color' : 'transparent', 'font-family': 'Goudy Old Style'}">
-        <mat-card-header class="user-info-header">
-          <div mat-card-avatar class="profile-image" [ngStyle]="{'background' : 'url(./assets/images/defaultIcon.png)'}"></div>
-          <mat-card-title> {{currentUser.name}} {{currentUser.lastname}} </mat-card-title>
-          <mat-card-subtitle>
-            Username: {{currentUser.username}}
-            <br/>
-            Email: {{currentUser.email}}
-          </mat-card-subtitle>
-        </mat-card-header>
+<body class = "body">
+    <h1>Welcome to unlockvistador!</h1> 
+    <button type="submit" onclick="closeForm(`login`); openForm(`registration`)">Registracija</button>
+    <div class="form-popup" id="formRegister">
+        <form id="formReg" action="" class="form-container">
+            <h3>Registrujte se:</h3>
+            <label for="email"><b>E-mail:*</b></label>
+            <input id="emailReg" type="text" name="email" placeholder="" required>
+            <br>
+            <label for="username"><b>Korisničko ime*:</b></label>
+            <input id="usernameReg" type="text" name="username" placeholder="" required>
+            <br>
+            <label for="password"><b>Lozinka:*</b></label>
+            <input id="passowordReg" type="text" name="password" placeholder="" required>
+            <br>
+            <label for="first_name"><b>Ime:</b></label>
+            <input id="nameReg" type="text" name="first_name" placeholder="" >
+            <br>
+            <label for="last_name"><b>Prezime:</b></label>
+            <input id="lastNameReg" type="text" name="last_name" placeholder="" >
+            <br>
+            <button type="submit">Registruj se</button>
+            <button type="reset">Poništi</button>
+            <button type="submit" onclick="closeForm(`registration`)">Zatvori formular</button>
+        </form>
+    </div>
 
-        <mat-card-content class="info-content">
-          Otkljucane regije:
+    <button type="submit" onclick="closeForm(`registration`); openForm(`login`)">Prijava</button>
+    <div class="form-popup" id="formLogin">
+        <form id="formLog" action="" class="form-container">
+            <h3>Prijavite se:</h3>
+            <label for="email"><b>Mejl*:</b></label>
+            <input id="emailLog" type="text" name="email" placeholder="" required>
+            <br>
+            <label for="password"><b>Lozinka:*</b></label>
+            <input id="passwordLog" type="text" name="password" placeholder="" required>
+            <br>
+            <button type="submit">Prijavi se</button>
+            <button type="reset">Poništi unos</button>
+            <button type="submit" onclick="closeForm(`login`)">Zatvori formular</button>
+        </form>
+    </div>
 
-          <div class="unlocked-regions-badges">
-            <div id="d1" style="display:inline-block; width:100px;"> <img [src]="showBadge('Backa')"></div>
-            <div id="d1" style="display:inline-block; width:100px;"> <img [src]="showBadge('Srem')" ></div>
-            <div id="d1" style="display:inline-block; width:100px;"> <img [src]="showBadge('Banat')" ></div>
-            <br/>
-            <div id="d2" style="display:inline-block; width:100px;"> <img [src]="showBadge('Beograd')" > </div>
-            <div id="d2" style="display:inline-block; width:100px;"> <img [src]="showBadge('Sumadija')"> </div>
-            <div id="d2" style="display:inline-block; width:100px;"> <img [src]="showBadge('Istok')"> </div>
-            <br/>
-            <div id="d3" style="display:inline-block; width:100px;"> <img [src]="showBadge('Raska')" > </div>
-            <div id="d3" style="display:inline-block; width:100px;"> <img [src]="showBadge('Nisava')" > </div>
-            <div id="d3" style="display:inline-block; width:100px;"> <img [src]="showBadge('Kosovo')"> </div>
-          </div>
-
-        </mat-card-content>
-
-        <mat-card-footer>
-          <button class="logOut" mat-raised-button> Odjavi se </button>
-        </mat-card-footer>
-      </mat-card>>
-    </mat-grid-tile>
-
-    <mat-grid-tile [colspan]="4" [rowspan]="6" [ngStyle]="{'background-image' : 'url(./assets/images/main_page_background_part.png)'}" class="grid_main">
-                    <svg class = "serbia" width="568" height="739">
-                        <!--G : Backa-->
-
-                    <polygon class = "province" points="28,51,86,31,112,8,159,15,159,148,172,163,142,155,63,155,42,148" z-index = "1" style="fill: url(#gradBacka);background-color:green"
-                    (click)="clickHandlerBacka()"
-                    id = "BackaID"
-                    title = "Backa"/>
-                    <text class="text-cta" z-index="2" x="65" y="110"fill = "rgb(255, 253, 208)" font-family = "Papyrus" font-size="30" opacity = "1" font-style = "italic">
-                        Bačka
-                    </text>
-
-                        <!--G : Banat -->
-                    <polygon class = "province" points="183,19,254,134,327,178,333,217,311,233,230,245,194,187,159,149,159,15" style="fill: url(#gradBanat)"
-                    (click)="clickHandlerBanat()"
-                    id = "BanatID"
-                    title = "Banat"/>
-                    <text class="text-cta" z-index="2" x="195" y="170"fill = "rgb(255, 253, 208)" font-family = "Papyrus" font-size="30" opacity = "1" font-style = "italic">
-                      Banat
-                    </text>
-                        <!--G: Srem-->
-                    <polygon class = "province" points="61,155,142,155,172,163,194,187,137,198,142,221,80,215,37,218,41,176,88,164" style="fill: url(#gradSrem)"
-                    (click)="clickHandlerSrem()"
-                    id = "SremID"
-                    title = "Srem"/>
-                    <text class="text-cta" z-index="2" x="75" y="200"fill = "rgb(255, 253, 208)" font-family = "Papyrus" font-size="28" opacity = "1" font-style = "italic">
-                      Srem
-                    </text>
-                        <!--G: Beograd-->
-                    <polygon class = "province" points="65,254,80,215,142,221,137,198,194,187,230,245,234,272" style="fill: url(#gradBeograd);fill-rule:nonzero"
-                    (click)="clickHandlerBeograd()"
-                    id = "BeogradID"
-                    title = "Beograd i Mačva"/>
-                    <text class="text-cta" z-index="2" x="95" y="250"fill = "rgb(255, 253, 208)" font-family = "Papyrus" font-size="26" opacity = "1" font-style = "italic">
-                      Beograd
-                    </text>
-                        <!--G: Ist. Srbija-->
-                    <polygon class = "province" points="305,420,251,372,229,245,311,233,383,260,400,287,434,247,474,271,440,286,465,314,465,325,429,364,428,413,308,413" style="fill: url(#gradIstok);fill-rule:nonzero"
-                    (click)="clickHandlerIstok()"
-                    id = "IstokID"
-                    title ='Istočna Srbija' />
-                    <text class="text-cta" z-index="2" x="260" y="340"fill = "rgb(255, 253, 208)" font-family = "Papyrus" font-size="30" opacity = "1" font-style = "italic">
-                      Istočna Srbija
-                    </text>
-                        <!--G: Sumadija -->
-                    <polygon class = "province" points="106,358,53,314,53,279,65,254,234,271,251,372,305,420,295,444" style="fill: url(#gradSumadija);fill-rule:nonzero"
-                    (click)="clickHandlerSumadija()"
-                    id = "SumadijaID"
-                    title = "Šumadija" />
-                    <text class="text-cta" z-index="2" x="115" y="340"fill = "rgb(255, 253, 208)" font-family = "Papyrus" font-size="30" opacity = "1" font-style = "italic">
-                      Šumadija
-                    </text>
-                        <!--G: Nisava -->
-                    <polygon class = "province" points="374,652,380,581,338,562,343,546,279,483,308,412,428,413,507,500,440,560,444,628" style="fill: url(#gradNisava);fill-rule:nonzero"
-                    (click)="clickHandlerNisava()"
-                    id = "NisavaID"
-                    title = "Jugoistočna Srbija"/>
-                    <text class="text-cta" z-index="2" x="295" y="495"fill = "rgb(255, 253, 208)" font-family = "Papyrus" font-size="26" opacity = "1" font-style = "italic">
-                      Jugoistočna Srbija
-                    </text>
-                        <!--G: Raska -->
-                    <polygon class = "province" points="50,449,61,429,89,437,92,412,66,366,106,358,295,444,279,484,256,488,216,526,221,539,185,546" style="fill: url(#gradRaska);fill-rule:nonzero"
-                    (click)="clickHandlerRaska()"
-                    id = "RaskaID"
-                    title = "Raška"/>
-                    <text class="text-cta" z-index="2" x="145" y="460"fill = "rgb(255, 253, 208)" font-family = "Papyrus" font-size="30" opacity = "1" font-style = "italic">
-                      Raška
-                    </text>
-                        <!--G: Kosovo i Metohija -->
-                    <polygon class = "province" points="217,724,221,703,155,597,150,566,173,568,185,546,221,539,216,526,256,488,279,483,343,546,338,562,380,581,374,652,303,677,286,658,239,685,243,712" style="fill: url(#gradKosovo);fill-rule:nonzero"
-                    (click)="clickHandlerKosovo()"
-                    id = "KosovoID"
-                    title="Kosovo i Metohija"/>
-                    <text class="text-cta" z-index="2" x="165" y="605"fill = "rgb(255, 253, 208)" font-family = "Papyrus" font-size="28" opacity = "1" font-style = "italic">
-                      Kosovo i Metohija
-                    </text>
-                        <!--G: Treba da se dodaju ostali regioni koji su na mapi!-->
-
-
-                    <defs>
-                      <radialGradient id="gradBacka"  cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                        <stop offset="0%" style="stop-color:rgb(219, 152, 27);stop-opacity:0.8" />
-                        <stop offset="100%" style="stop-color:rgb(104, 87, 40);stop-opacity:1" />
-                      </radialGradient>
-                      <radialGradient id="gradBanat"  cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                        <stop offset="20%" style="stop-color:rgb(175, 154, 59);stop-opacity:0.8" />
-                        <stop offset="80%" style="stop-color:rgb(146, 129, 43);stop-opacity:1" />
-                      </radialGradient>
-                      <radialGradient id="gradSrem"  cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                        <stop offset="10%" style="stop-color:rgb(141, 173, 81);stop-opacity:0.8" />
-                        <stop offset="90%" style="stop-color:rgb(136, 144, 58);stop-opacity:1" />
-                      </radialGradient>
-                      <radialGradient id="gradBeograd"  cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                        <stop offset="10%" style="stop-color:rgb(146, 123, 73);stop-opacity:0.8" />
-                        <stop offset="90%" style="stop-color:rgb(109, 101, 60);stop-opacity:1" />
-                      </radialGradient>
-                      <radialGradient id="gradIstok"  cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                        <stop offset="0%" style="stop-color:rgb(110, 94, 49);stop-opacity:0.8" />
-                        <stop offset="100%" style="stop-color:rgb(116, 114, 107);stop-opacity:1" />
-                      </radialGradient>
-                      <radialGradient id="gradSumadija"  cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                        <stop offset="0%" style="stop-color:rgb(153, 131, 90);stop-opacity:0.8" />
-                        <stop offset="100%" style="stop-color:rgb(104, 79, 57);stop-opacity:1" />
-                      </radialGradient>
-                      <radialGradient id="gradNisava"  cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                        <stop offset="0%" style="stop-color:rgb(38, 46, 82);stop-opacity:0.8" />
-                        <stop offset="100%" style="stop-color:rgb(101, 104, 121);stop-opacity:1" />
-                      </radialGradient>
-                      <radialGradient id="gradRaska"  cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                        <stop offset="20%" style="stop-color:rgb(175, 162, 102);stop-opacity:0.8" />
-                        <stop offset="80%" style="stop-color:rgb(124, 111, 68);stop-opacity:1" />
-                      </radialGradient>
-                      <radialGradient id="gradKosovo"  cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                        <stop offset="0%" style="stop-color:rgb(144, 105, 43);stop-opacity:0.8" />
-                        <stop offset="100%" style="stop-color:rgb(60, 80, 37);stop-opacity:1" />
-                      </radialGradient>
-                      <!--
-                      <pattern id="diagonalHatch" patternUnits="userSpaceOnUse" width="4" height="4">
-                        <path d="M-1,1 l2,-2
-                                 M0,4 l4,-4
-                                 M3,5 l2,-2"
-                              style="stroke:black; stroke-width:1.5" />
-                      </pattern>
-                    -->
-
-                      <pattern id="diagonalHatchBacka" patternUnits="userSpaceOnUse" width="4" height="4">
-                        <path d="M-1,1 l2,-2
-                                 M0,4 l4,-4
-                                 M3,5 l2,-2"
-                              style="stroke:rgb(104, 87, 40); stroke-width:1.75" />
-                      </pattern>
-
-                      <pattern id="diagonalHatchBanat" patternUnits="userSpaceOnUse" width="4" height="4">
-                        <path d="M-1,1 l2,-2
-                                 M0,4 l4,-4
-                                 M3,5 l2,-2"
-                              style="stroke:rgb(146, 129, 43); stroke-width:1.75" />
-                      </pattern>
-                      <pattern id="diagonalHatchSrem" patternUnits="userSpaceOnUse" width="4" height="4">
-                        <path d="M-1,1 l2,-2
-                                 M0,4 l4,-4
-                                 M3,5 l2,-2"
-                              style="stroke:rgb(136, 144, 58); stroke-width:1.75" />
-                      </pattern>
-                      <pattern id="diagonalHatchBeograd" patternUnits="userSpaceOnUse" width="4" height="4">
-                        <path d="M-1,1 l2,-2
-                                 M0,4 l4,-4
-                                 M3,5 l2,-2"
-                              style="stroke:rgb(109, 101, 60); stroke-width:1.75" />
-                      </pattern>
-                      <pattern id="diagonalHatchIstok" patternUnits="userSpaceOnUse" width="4" height="4">
-                        <path d="M-1,1 l2,-2
-                                 M0,4 l4,-4
-                                 M3,5 l2,-2"
-                              style="stroke:rgb(116, 114, 107); stroke-width:1.75" />
-                      </pattern>
-                      <pattern id="diagonalHatchSumadija" patternUnits="userSpaceOnUse" width="4" height="4">
-                        <path d="M-1,1 l2,-2
-                                 M0,4 l4,-4
-                                 M3,5 l2,-2"
-                              style="stroke:rgb(104, 79, 57); stroke-width:1.75" />
-                      </pattern>
-                      <pattern id="diagonalHatchNisava" patternUnits="userSpaceOnUse" width="4" height="4">
-                        <path d="M-1,1 l2,-2
-                                 M0,4 l4,-4
-                                 M3,5 l2,-2"
-                              style="stroke:rgb(101, 104, 121); stroke-width:1.75" />
-                      </pattern>
-                      <pattern id="diagonalHatchRaska" patternUnits="userSpaceOnUse" width="4" height="4">
-                        <path d="M-1,1 l2,-2
-                                 M0,4 l4,-4
-                                 M3,5 l2,-2"
-                              style="stroke:rgb(124, 111, 68); stroke-width:1.75" />
-                      </pattern>
-                      <pattern id="diagonalHatchKosovo" patternUnits="userSpaceOnUse" width="4" height="4">
-                        <path d="M-1,1 l2,-2
-                                 M0,4 l4,-4
-                                 M3,5 l2,-2"
-                              style="stroke:rgb(60, 80, 37); stroke-width:1.75" />
-                      </pattern>
-
-                    </defs>
-
-                    </svg>
-
-    </mat-grid-tile>
-
-</mat-grid-list>
-<app-model-for-adding-questions *ngIf = "clickedRegion != null && isAdminUser == true" (closeEmiter) = "clickedRegion = null" [regionName] = "clickedRegion" [localUserName] = "localUserName"></app-model-for-adding-questions>
-<app-region-dialog *ngIf = "clickedRegion != null && isAdminUser == false && isUnlockedRegion() == true && clickedRegionDialog == true" [regionName] = "clickedRegion" (closeEmiter) = "clickedRegion = null" (closeEmiter2) = "clickedShowFunFacts = true; clickedRegionDialog = false;"
- (closeEmiter3) = "clickedShowComments = true; clickedRegionDialog = false"></app-region-dialog>
-<app-fun-facts *ngIf = "clickedShowFunFacts == true" [regionName] = clickedRegion (closeEmiter) = "clickedShowFunFacts = false" ></app-fun-facts>
-<app-comments-display *ngIf = "clickedShowComments == true" (closeEmitter) = "clickedShowComments = false" [regionName] = "clickedRegion"></app-comments-display>
-<app-quiz-component *ngIf = "clickedRegion != null && isAdminUser == false && isUnlockedRegion() == false" [regionName] = "clickedRegion"  (closeEmitter) = "clickedRegion = null;" (closeEmitter2) = "clickedRegion = null; finishedQuiz = true;"> </app-quiz-component>
-<app-finished-quiz *ngIf = "finishedQuiz == true && isAdminUser == false" [regionName] = "clickedRegion" (closeEmitter3) = "initalizeMap(); finishedQuiz = false;  randomFja();"></app-finished-quiz>
+    <svg class = "serbia" width="568" height="739">
+        <!--G : Backa-->
+    <polygon points="28,51,86,31,112,8,159,15,159,148,172,163,142,155,63,155,42,148" style="fill:lime;" 
+    onmouseout="mouseOutHandlerBacka()"
+    onmouseover="mouseOverHandlerBacka()"
+    onclick="clickHandlerBacka()" 
+    id = "BackaID"/>
+        <!--G : Banat -->
+    <polygon points="183,19,254,134,327,178,333,217,311,233,230,245,194,187,159,149,159,15" style="fill:yellow" 
+    onmouseout="mouseOutHandlerBanat()"
+    onmouseover="mouseOverHandlerBanat()"
+    onclick="clickHandlerBanat()" 
+    id = "BanatID"/>
+        <!--G: Srem-->
+    <polygon points="61,155,142,155,172,163,194,187,137,198,142,221,80,215,37,218,41,176,88,164" style="fill:rgb(24, 51, 126)" 
+    onmouseout="mouseOutHandlerSrem()"
+    onmouseover="mouseOverHandlerSrem()"
+    onclick="clickHandlerSrem()" 
+    id = "SremID"/>        
+        <!--G: Beograd-->
+    <polygon points="65,254,80,215,142,221,137,198,194,187,230,245,234,272" style="fill:rgb(126, 24, 121)" 
+    onmouseout="mouseOutHandlerBeograd()"
+    onmouseover="mouseOverHandlerBeograd()"
+    onclick="clickHandlerBeograd()" 
+    id = "BeogradID"/>  
+        <!--G: Ist. Srbija-->
+        <polygon points="305,420,251,372,229,245,311,233,383,260,400,287,434,247,474,271,440,286,465,314,465,325,429,364,428,413,308,413" style="fill:rgb(139, 153, 105)" 
+    onmouseout="mouseOutHandlerIstok()"
+    onmouseover="mouseOverHandlerIstok()"
+    onclick="clickHandlerIstok()" 
+    id = "IstokID"/>  
+        <!--G: Sumadija -->
+    <polygon points="106,358,53,314,53,279,65,254,234,271,251,372,305,420,295,444" style="fill:rgb(111, 92, 146)" 
+    onmouseout="mouseOutHandlerSumadija()"
+    onmouseover="mouseOverHandlerSumadija()"
+    onclick="clickHandlerSumadija()" 
+    id = "SumadijaID"/>  
+        <!--G: Nisava -->
+    <polygon points="374,652,380,581,338,562,343,546,279,483,308,412,428,413,507,500,440,560,444,628" style="fill:rgb(12, 53, 46)" 
+    onmouseout="mouseOutHandlerNisava()"
+    onmouseover="mouseOverHandlerNisava()"
+    onclick="clickHandlerNisava()" 
+    id = "NisavaID"/>  
+        <!--G: Raska -->
+    <polygon points="50,449,61,429,89,437,92,412,66,366,106,358,295,444,279,484,256,488,216,526,221,539,185,546" style="fill:rgb(51, 165, 140)" 
+    onmouseout="mouseOutHandlerRaska()"
+    onmouseover="mouseOverHandlerRaska()"
+    onclick="clickHandlerRaska()" 
+    id = "RaskaID"/>  
+        <!--G: Kosovo i Metohija -->
+    <polygon points="217,724,221,703,155,597,150,566,173,568,185,546,221,539,216,526,256,488,279,483,343,546,338,562,380,581,374,652,303,677,286,658,239,685,243,712" style="fill:rgb(177, 115, 15)" 
+    onmouseout="mouseOutHandlerKosovo()"
+    onmouseover="mouseOverHandlerKosovo()"
+    onclick="clickHandlerKosovo()" 
+    id = "KosovoID"/>  
+        <!--G: Treba da se dodaju ostali regioni koji su na mapi!-->
+    </svg> 
+</body>

@@ -20,12 +20,6 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RegisterInfoComponent } from './register-info/register-info.component';
 import { MainPageComponent } from './main-page/main-page.component';
-import { ModelForAddingQuestionsComponent } from './model-for-adding-questions/model-for-adding-questions.component';
-import { RegionDialogComponent } from './region-dialog/region-dialog.component';
-import { FunFactsComponent } from './fun-facts/fun-facts.component';
-import { CommentsDisplayComponent } from './comments-display/comments-display.component';
-import { QuizComponentComponent } from './quiz-component/quiz-component.component';
-import { FinishedQuizComponent } from './finished-quiz/finished-quiz.component';
 
 @NgModule({
   declarations: [
@@ -34,13 +28,7 @@ import { FinishedQuizComponent } from './finished-quiz/finished-quiz.component';
     LoginComponent,
     RegisterComponent,
     RegisterInfoComponent,
-    MainPageComponent,
-    ModelForAddingQuestionsComponent,
-    RegionDialogComponent,
-    FunFactsComponent,
-    CommentsDisplayComponent,
-    QuizComponentComponent,
-    FinishedQuizComponent
+    MainPageComponent
   ],
   imports: [
     BrowserModule,

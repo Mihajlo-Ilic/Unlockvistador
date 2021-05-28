@@ -13,7 +13,11 @@ const regionsShema = mongoose.Schema({
     facts: {
 		type: Array,
 		require: true
-	}
+	},
+	locked: {
+		type: Boolean,
+		require: true
+	},
 });
 
 const regionsModel = mongoose.model('Regions', regionsShema);

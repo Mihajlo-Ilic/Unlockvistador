@@ -1,5 +1,5 @@
 form {
-    width: px;
+    width: 700px;
     height: 700px;
     border-color: whitesmoke;
     border-style: outset;
@@ -12,7 +12,7 @@ form {
     margin-top: -100px;
     margin-left: -300px;
     text-align: center;
-    font-family:  "Goudy Old Style", sans-serif;
+    font-family:  "Goudy Old Style", sans-serif; 
 }
 
 mat-card-title {
@@ -25,15 +25,11 @@ mat-form-field {
     border-color: black;
 }
 mat-card-actions {
-
+    
     text-align: center;
     top: 30%;
 }
-.input {
+.input { 
     border-color: black;
     border-width: 3px;
-}
-button {
-  width: 200px;
-  height: 100px;
 }

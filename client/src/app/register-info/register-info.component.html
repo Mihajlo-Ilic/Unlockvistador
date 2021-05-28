@@ -1,15 +1,21 @@
 <mat-card class="example-card">
+     <mat-card-title>Uspešno ste registrovani! </mat-card-title>
+     <mat-card-content *ngIf = "currentUser">
+          <div>
+               <mat-label> Korisničko ime:
 
-  <form class="card-body">
-    <mat-card-title> Uspešno ste registrovani!  </mat-card-title>
-    <br>
-    <p>
-    </p>
-    <p>
-      <mat-card-actions>
-        <button class = "btn-lg"  [routerLink]="['/login']"> Uloguj se </button>
-      </mat-card-actions>
-    </p>
-  </form>
-
+                    <h5> {{ currentUser.username }}</h5>
+               </mat-label>
+          </div>
+          <div>
+               <mat-label>Lozinka: </mat-label>
+               <h5>{{ currentUser.password }} </h5>
+          </div>
+          <mat-card-actions>
+               <button [routerLink]="['/main', currentUser.username]" mat-raised-button
+                    aria-label="Example icon button with a home icon">Prikaži profil
+                    <mat-icon>home</mat-icon>
+               </button>
+          </mat-card-actions>
+     </mat-card-content>
 </mat-card>

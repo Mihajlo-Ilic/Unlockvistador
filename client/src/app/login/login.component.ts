@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private auth: AuthService) {
 
     this.user = userService.getUsers();
+
     this.checkForm = formBuilder.group({
       username: ['', [Validators.required, Validators.pattern("[a-zA-Z]+[0-9]*")]],
       password: ['', [Validators.required, Validators.pattern("[a-zA-Z]+[0-9]+")]]
@@ -57,15 +58,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     const sub = this.userService.login(data.username, data.password).subscribe(e => {
       if (e.user) {
         if (e.user.username !== undefined) {
-          this.auth.storeToken(e.accessToken);
+          this.auth.storeToken(e.token);
 
           this.currentUsername = e.user.username;
-          const usrObj = new User(e.user._id, e.user.name, e.user.lastname, e.user.username,
-             e.user.email, e.user.image, e.user.password, e.user.unlockedRegions, e.user.admin, e.user.loggedIn, e.accessToken)
-          this.userService.putCurrentUser(usrObj);
-
+          this.userService.putCurrentUser(e.user);
           this.router.navigate(['/main', data.username]);
-          //window.alert(this.userService.currentUser.getUnlockedRegions())
           return;
         }
       }
@@ -85,11 +82,11 @@ export class LoginComponent implements OnInit, OnDestroy {
         console.log(e.user.username);
         if (e.user.username !== undefined) {
           this.auth.storeToken(e.token);
-
+  
           this.currentUsername = e.user.username;
           this.userService.putCurrentUser(e.user);
           this.profileExist = true;
-
+  
         }
       });
       this.activeSub.push(sub);
