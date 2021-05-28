@@ -1,0 +1,73 @@
+.text_cta {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+  -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+}
+grid_main{
+    border-width: 3px;
+    border-color: black;
+}
+.body{
+    background-color: transparent;
+}
+
+.province:hover {
+  filter: sepia();
+}
+.text_cta::selection{
+  background: none;
+}
+.profile {
+  border-color: whitesmoke;
+  border-style: outset;
+  border-radius: 20px;
+  border-width: 3px;
+  box-shadow: 2px 5px black;
+  width: calc(100% - 70px);
+  height: calc(100% - 70px);
+  font-size: 20px;
+}
+.mat-card-avatar {
+  height: 80px;
+  width: 80px;
+  border-radius: 20%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+.mat-grid-tile{
+  border-color: whitesmoke;
+  border-style: outset;
+  border-radius: 20px;
+  border-width: 3px;
+  box-shadow: 2px 5px black;
+}
+.info {
+  background-color: transparent;
+}
+.img {
+  margin: 1px 1px 1px 1px;
+}
+.mat-card{
+  display:flex;
+  flex-direction: column;
+  font-size: 40px;
+}
+
+.mat-card-header {
+  flex-shrink: 0;
+}
+
+.mat-card-content{
+  flex-grow: 1;
+  overflow: auto;
+  font-size: 20px;
+}
+.userInfo{
+  text-align: center;
+  font-size: 20px;
+}

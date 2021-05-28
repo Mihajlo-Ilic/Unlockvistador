@@ -35,8 +35,9 @@ export class UserService {
     return this.http.get<User>(this.userLink + id);
   }
 
-  public getUserByUsername(username: String): Observable<User> {
-    return this.http.get<User>(this.userLink + "findUser?username=" + username);
+  public getUserByUsername(username: String, link : String): Observable<User> {
+    let userLink = link
+    return this.http.get<User>(userLink + "findUser?username=" + username);
   }
 
   public addUser(data) {
@@ -44,9 +45,14 @@ export class UserService {
   }
 
   //dodavanje novog regiona = izmena kod user-a
-  public addRegion(uid, region) {
-    this.http.post(this.userLink + "regions/" + uid, region);
-    return this.http.post<any>(this.userLink + "regions/" + uid, region);
+  public addRegion(email, regionName) {
+    //this.http.post(this.userLink + "regions/" + uid, region);
+    //return this.http.post<any>(this.userLink + "regions/" + uid, region);
+    let body = {
+        email: email,
+        regionName : regionName
+    }
+    return this.http.patch<any>(this.userLink + "addRegion", body)
   }
 
   public getCurrentUser(): User {
@@ -55,7 +61,7 @@ export class UserService {
 
   public putCurrentUser(user: User) {
     this.currentUser = user;
-    //    window.alert(this.currentUser);
+    console.log(this.currentUser);
   }
 
   public updateUserById(id: String, data): Observable<User> {

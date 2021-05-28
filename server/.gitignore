@@ -3,6 +3,13 @@
 # dependencies
 /node_modules
 
+<<<<<<< HEAD
+=======
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin*.json
+
+>>>>>>> fix_login_signin
 # IDEs and editors
 /.idea
 

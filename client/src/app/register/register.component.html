@@ -4,15 +4,15 @@
         <mat-card-content>
             <div>
                 <mat-form-field class='create-input'>
-                    <mat-label class="firstName"> Ime </mat-label>
-                    <input matInput type="text" name="firstName" formControlName="firstName">
-                    <mat-error *ngIf="firstName.errors?.required">Ime je obavezno.</mat-error>
+                    <mat-label class="name"> Ime </mat-label>
+                    <input matInput type="text" name="name" formControlName="name">
+                    <mat-error *ngIf="name.errors?.required">Ime je obavezno.</mat-error>
                 </mat-form-field>
 
                 <mat-form-field class='create-input lastName'>
                     <mat-label> Prezime </mat-label>
-                    <input matInput type="text" name="lastName" formControlName="lastName">
-                    <mat-error *ngIf="lastName.errors?.required">Prezime je obavezno.</mat-error>
+                    <input matInput type="text" name="lastname" formControlName="lastname">
+                    <mat-error *ngIf="lastname.errors?.required">Prezime je obavezno.</mat-error>
                 </mat-form-field>
             </div>
 
@@ -60,11 +60,11 @@
                                 <mat-icon style="margin-left: 70%;">account_circle</mat-icon>
                             </mat-panel-description>
                         </mat-expansion-panel-header>
-            
-                            <div>            
+
+                            <div>
                             <input type ="file" style="display: none" (change)="onFileSelected($event)" #fileInput>
                             <button type="button" (click)="fileInput.click()" mat-raised-button>izaberite fajl</button>
-                            
+
                             <button type="button" (click)="onUpload()" mat-raised-button>potvrdite</button>
                             </div>
                     </mat-expansion-panel>
