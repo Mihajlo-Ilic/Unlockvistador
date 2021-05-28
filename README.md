@@ -8,6 +8,7 @@ Interaktivna mapa Srbije koja ima podršku za korisničke naloge u kojima će ko
 - express.js
 - MongoDB baza podataka
 
+
 ##Uputstvo za pokretanje
 - Pozicionirati se u direktorijum **client** i pokrenuti **npm install**. Zatim, za pokretanje aplikacije pokrenuti **ng serve**
 - U posebnom terminalu se pozicionirati u direktorijum **server** i pokrenuti komandu **node server.js**
