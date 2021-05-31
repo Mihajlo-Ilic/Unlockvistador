@@ -16,6 +16,11 @@ Interaktivna mapa Srbije koja ima podršku za korisničke naloge u kojima će ko
 
 - Lokalno napraviti praznu bazu **Unlockvistador** i u nju učitati podatke iz direktorijuma **server/database_data** (uz pomoć alata mongoimport ili preko MongoDB Compass)
 
+## Opis perzistentnih podataka 
+[Perzistentni podaci](https://gitlab.com/matfpveb/projekti/2020-2021/13-UNLOCKVISTADOR/-/blob/master/project%20info/13-Unlockvistador%20perzistentni%20podaci.pdf) 
+
+## Video demonstracija
+[Demo](https://gitlab.com/matfpveb/projekti/2020-2021/13-UNLOCKVISTADOR/-/blob/master/project%20info/demo.mkv)
 
 ## Developers
 
