@@ -26,7 +26,7 @@ export class MainPageComponent implements OnInit {
     regionsArray = ["Banat","Backa","Srem","Nisava","Beograd","Raska","Istok","Sumadija","Kosovo"];
 
 
-  	constructor(private rout : ActivatedRoute, private regionService : RegionService, private userService : UserService) {
+  	constructor(private rout : ActivatedRoute, private regionService : RegionService, private userService : UserService, private router: Router) {
       this.currentUser = this.userService.currentUser;
       this.isAdminUser = this.currentUser.admin;
       this.unlockedRegions = this.currentUser.unlockedRegions
@@ -73,6 +73,10 @@ export class MainPageComponent implements OnInit {
         }
       }
      return '';
+    }
+
+    public logOut() {
+        this.router.navigate([''])
     }
 
     public clickHandlerBanat() {

@@ -9,10 +9,13 @@ Interaktivna mapa Srbije koja ima podršku za korisničke naloge u kojima će ko
 - MongoDB baza podataka
 
 
-##Uputstvo za pokretanje
-- Pozicionirati se u direktorijum **client** i pokrenuti **npm install**. Zatim, za pokretanje aplikacije pokrenuti **ng serve**
-- U posebnom terminalu se pozicionirati u direktorijum **server** i pokrenuti komandu **node server.js**
-- Lokalno napraviti konekciju na MongoDB na adresi **localhost:27017**, napraviti bazu nazvanu **Unlockivstador** i učitati kolekcije uz pomoć JSON datoteka u direktorijumu **server/database_data**
+## Uputstvo za pokretanje
+- Pozicionirati se u direktorijum **client** i pokrenuti **npm install**. Zatim, za pokretanje klijentske aplikacije pokrenuti **ng serve**
+
+- U posebnom terminalu se pozicionirati u direktorijum **server**. Pokrenuti prvo **npm install** zatim i pokrenuti komandu **node server.js**
+
+- Lokalno napraviti praznu bazu **Unlockvistador** i u nju učitati podatke iz direktorijuma **server/database_data** (uz pomoć alata mongoimport ili preko MongoDB Compass)
+
 
 ## Developers
 

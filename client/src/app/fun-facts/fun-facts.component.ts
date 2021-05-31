@@ -27,7 +27,7 @@ export class FunFactsComponent implements OnInit {
       this.regionPicture = e.picture;
       console.log(e.picture);
       let elem = document.getElementById("ui-grid");
-      elem.setAttribute("style", "background-image: url('../../assets/images/region/" +  this.regionPicture +".jpg');");
+      //elem.setAttribute("style", "background-image: url('../../assets/images/region/" +  this.regionPicture +".jpg');");
     });
   }
 
