@@ -20,7 +20,7 @@ export class RegionService {
 
       const body = { regionName  ,text, answer, false_answer1,
         false_answer2,false_answer3,false_answer4,false_answer5,false_answer6};
-        console.log("I AM HERE", body);
+        //console.log("I AM HERE", body);
         return this.http.post<any>(this.regionLink + "inputQuestion", body);
   }
 
@@ -33,10 +33,9 @@ export class RegionService {
     return this.http.get<any>(this.regionLink + "getRegionComments?regionName=" + regionName)
   }
 
-  public sendRegionComment (regionName : string, uname: string, comment : string) {
+  public sendRegionComment (regionName : string, comment : string) {
     let body = {
         regionName : regionName,
-        uname : uname,
         comment : comment
     }
     

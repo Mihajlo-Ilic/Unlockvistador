@@ -87,11 +87,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }
     const uSub = this.userService.addUser(body).subscribe((user: User) => {
       this.userService.putCurrentUser(user);
-    });
-    this.userSub.push(uSub);
+      this.userSub.push(uSub);
 
-    this.checkForm.reset();
-    this.router.navigate(['/succReg', data.username]);
+      this.checkForm.reset();
+      this.router.navigate(['/succReg', data.username]);
+
+    });
+    
   }
 
   //ubacivanje slike u bazu :

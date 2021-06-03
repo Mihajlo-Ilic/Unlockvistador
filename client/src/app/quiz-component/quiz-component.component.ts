@@ -21,6 +21,7 @@ export class QuizComponentComponent implements OnInit {
   public triesRemaining : number;
 
   constructor(private regionService : RegionService, private userService : UserService) {
+    this.question = new Question("", "", "", "", "", "", "", "", "", "");
     this.answersRemaining = 5
     this.triesRemaining = 3
    }

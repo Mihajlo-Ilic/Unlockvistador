@@ -3,7 +3,6 @@ const User = require('../models/users');
 const Regions = require('../models/regions');
 const RefreshTokens = require('../models/refreshTokens');
 const mongoose = require('mongoose');
-const session = require('express-session');
 const jwt = require('jsonwebtoken');
 const bcrypt = require("bcrypt");
 
@@ -11,10 +10,9 @@ const bcrypt = require("bcrypt");
 //not directly used by router, but each request for data that requires authentication 
 //needs to pass through this function first
 module.exports.authenticateUser = (req,res,next) => {
-    console.log("Inside login function")
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1]
-    console.log("Toke: " + token)
+    //console.log(token)
     if(!token) {
         //there is no token/authorization header
         return res.status(402)   
@@ -82,7 +80,7 @@ module.exports.addNewUser = async(req, res, next) => {
 //Helper function for logging in; name is self-explanatory
 function generateAccessToken(payload) {
     return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
-        expiresIn: '25min'
+        expiresIn: '7d'
     })
 }
 
@@ -133,17 +131,9 @@ module.exports.authUser = async(req, res, next) => {
         if(users.length > 0) {
             console.log("Provera sifre")
             let user = users[0]
-            //temporarily pausing password encoding for testing purposes
             let isPasswordCorrect = await bcrypt.compare(pswd, user.password)
-            //let isPasswordCorrect = (pswd === user.password)
             if(isPasswordCorrect) {
-               console.log("Sifra odgovarajuca")
-               //Not sure if this is still neccessary since we're using JWT tokens
-               /*
-               user.loggedIn = true;
-               await User.updateOne({username : uname},
-                   {$set: user}
-                   ).exec();*/                
+                
                 
                 let payload = {
                     _id: user._id,
@@ -154,8 +144,6 @@ module.exports.authUser = async(req, res, next) => {
                 let accessToken = generateAccessToken(payload)
                 let refreshToken = jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET)
 
-                //inserting our new refresh token into collection
-                //FIX: tokens aren't appearing in DB for whatever reason
                 RefreshTokens.create({
                     _id : new mongoose.Types.ObjectId,
                     token : refreshToken
@@ -180,7 +168,6 @@ module.exports.authUser = async(req, res, next) => {
 
 //router.delete(/logout)
 //Log-out function; Invalidates the user's refresh token
-//TODO: Client-side logout 
 module.exports.logOut = async (req, res, next) => {
     await RefreshTokens.deleteOne({token : req.body.token}, function (err) {
         if(err) {
@@ -241,7 +228,7 @@ module.exports.findUser = async(req, res, next) => {
 
 module.exports.addRegionForUser = async(req, res, next) => {
     try {
-        const email = req.body.email;
+        const email = req.user.email;
         let user = await User.findOne({
             email: email
         });

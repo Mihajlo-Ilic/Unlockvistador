@@ -14,10 +14,6 @@ async function getRegionId(regionName) {
     return regions[0]._id;
 }
 
-// this module is starting a test also
-
-// 
-
 module.exports.getRegionComments = async (req, res, next) => {
     try {
         let regionName = req.query.regionName
@@ -78,78 +74,12 @@ module.exports.getRegionQuestion = async (req, res, next) => {
         next(err)
     }
 }
-/*
-module.exports.getRegion = async (req, res, next) => {
-    try {
-        const regionName = req.params.region_name;
 
-        let regions = await Regions.find({name : regionName}).exec()
-        if(regions.length === 0){
-            res.status(404).json("Nema regiona sa imenom " + regionName)
-            return
-        }
-        else {
-            let region = regions[0]
-            if (region.locked) {
-                let regionId = region._id
-                let questions = await Questions.find({region: regionId}).exec()
-                if (questions.length === 0) {
-                    res.status(404).json("Nema pitanja za region " + regionName)
-                }
-                else {
-                    //biramo nasumicno pitanje
-                    let question = questions[Math.floor(Math.random() * questions.length)]
-                    //biramo 3 nasumicna pogresna odgovora
-                    let false_answers = []
-                    false_answers.push(question.false_answer1)
-                    false_answers.push(question.false_answer2)
-                    false_answers.push(question.false_answer3)
-                    false_answers.push(question.false_answer4)
-                    false_answers.push(question.false_answer5)
-                    false_answers.push(question.false_answer6)
-
-                    let false_answer_idxs = []
-                    while (false_answer_idxs.length < 3) {
-                        let n = Math.floor(Math.random() * 6)
-                        if (!false_answer_idxs.includes(n))
-                            false_answer_idxs.push(n)
-                    }
-                    res.json({
-                        text: question.text,
-                        answer: question.answer,
-                        false_answer1: false_answers[false_answer_idxs[0]],
-                        false_answer2: false_answers[false_answer_idxs[1]],
-                        false_answer3: false_answers[false_answer_idxs[2]]
-                    }).status(200);
-                }
-
-            }
-            else {
-                let comments = await Comments.find({region : region._id}).exec()
-                let comms = []
-                for(i = 0; i < comments.length; i++) {
-                    let usr = await User.find({_id : comments[i].user})
-                    let username = "Nepoznat korisnik"
-                    if(usr.length > 0) {
-                        username = usr[0].username;
-                    }
-                    comms.push(username + ":" + comments[i].comment);
-                }
-                res.json({ facts : region.facts, comments: comms  }).status(200)
-            }
-
-        }
-    }
-    catch (error) {
-        console.log(error)
-        next(error)
-    }
-}*/
 
 module.exports.addComment = async(req, res, next) => {
     //console.log("Primljen komentar " + req.body.comment + "za oblast " + req.body.regionName + "od korisnika " + req.body.uname)
     try {
-        let users = await User.find({username : req.body.uname}).exec()
+        let users = await User.find({username : req.user.username}).exec()
         if(users.length === 0) {
             res.status(500).json("Greska u bazi - Trenutno ulogovan korisnik nije u bazi");
         }
@@ -181,41 +111,6 @@ module.exports.addComment = async(req, res, next) => {
     }
 }
 
-/*
-module.exports.addComment = async(req, res, next) => {
-    console.log("Primljen komentar " + req.body.comment + "za oblast " + req.body.regionName)
-    //M: posto nije jos uvek uradjeno logovanje svi komentari ce biti od gase
-    try {
-        let comment = req.body.comment;
-        let regionName = req.body.regionName;
-
-        let regionId = await getRegionId(regionName)
-        if (regionId === -1) {
-            console.log("Region not found")
-            return res.json({error: "Region not found!"}).status(500)
-        }
-
-        let default_uid = mongoose.Types.ObjectId("606f7ff056d684a2fd6331ee")
-        
-        const newComment = {
-            _id: new mongoose.Types.ObjectId,
-            region: regionId,
-            //user : user._id
-            user: default_uid,
-            comment: comment
-        }
-
-        Comments.create(newComment).
-        then(comment => {res.status(200).json({msg: "dodat komentar" + comment.comment})})
-            .catch(err => {
-                res.send('error' + err);
-            })
-    }
-    catch (error) {
-        next(error)
-    }
-
-}*/
 
 // if the test is completed then we are unlocking the region for user
 // patch request

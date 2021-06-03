@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'client';
-  private rout : Router
+  constructor (private rout : Router) {
+
+  }
   ngOnInit() {
       this.rout.navigate([''])
   }

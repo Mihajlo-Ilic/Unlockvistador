@@ -3,8 +3,10 @@ import { User } from '../models/user.model';
 import { RegisterComponent } from '../register/register.component'
 import { LoginComponent } from '../login/login.component';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { retry } from 'rxjs/operators';
+import { AuthService } from '../auth/auth.service'
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -17,15 +19,13 @@ export class UserService {
 
   public currentUser: User;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private authService : AuthService, private router : Router) {
     // http zahtev za dohvatanje user-a
     this.http.get<User[]>(this.userLink)
       .subscribe(res => {
         this.allUsers = res;
       });
   }
-
-
 
   public getUsers(): User[] {
     return this.allUsers;
@@ -49,7 +49,6 @@ export class UserService {
     //this.http.post(this.userLink + "regions/" + uid, region);
     //return this.http.post<any>(this.userLink + "regions/" + uid, region);
     let body = {
-        email: email,
         regionName : regionName
     }
     return this.http.patch<any>(this.userLink + "addRegion", body)
@@ -72,8 +71,12 @@ export class UserService {
 
   public login(username: string, password: string) {
     const body = { username, password };
-
     return this.http.post<any>(this.userLink + 'auth', body);
+  }
+
+  public logout() {
+    this.authService.logout()
+    this.router.navigate([''])
   }
 
 }

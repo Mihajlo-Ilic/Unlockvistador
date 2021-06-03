@@ -76,7 +76,7 @@ export class MainPageComponent implements OnInit {
     }
 
     public logOut() {
-        this.router.navigate([''])
+        this.userService.logout()
     }
 
     public clickHandlerBanat() {

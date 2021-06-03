@@ -4,25 +4,35 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
+  HttpResponse,
 } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { AuthService } from './auth.service';
+import { catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
 
-  constructor(public auth: AuthService) {}
+  constructor(public auth: AuthService, private router : Router) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     request = request.clone({
       setHeaders: {
-      Authorization: `JWT ${this.auth.getToken()}`,
+      Authorization: `Bearer ${this.auth.getToken()}`,
       },
     });
 
-    return next.handle(request);
+    return next.handle(request).pipe(catchError((err : any) => {
+      if (err.status === 401) {
+        this.auth.logout()
+        this.router.navigate([''])
+      }
+      const error = err.error.message || err.statusText
+      return throwError(error)
+    }));
   }
 
-  // TODO: If token expired, redirect the user to the login page!
 }
+

@@ -29,4 +29,9 @@ export class AuthService {
     const token = this.getToken();
     return this.helper.isTokenExpired(token);
   }
+
+  public logout() : void {
+      localStorage.removeItem('jwt')
+      localStorage.removeItem('id')
+  }
 }

@@ -54,7 +54,7 @@ export class CommentsDisplayComponent implements OnInit {
       let uname = this.userService.currentUser.username
       let region = this.regionName
 
-      this.regionService.sendRegionComment(region, uname, comment).subscribe(e => {
+      this.regionService.sendRegionComment(region, comment).subscribe(e => {
         //refresh comments
         this.getComments()
       })
