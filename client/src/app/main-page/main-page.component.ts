@@ -69,6 +69,22 @@ export class MainPageComponent implements OnInit {
   	  const pathToImage = './assets/images/' + regionName + '.png';
       for(let i = 0; i < this.unlockedRegions.length; i++) {
         if(this.unlockedRegions[i] === regionName) {
+          let ime = this.unlockedRegions[i]
+          if(this.unlockedRegions[i] === "Nisava"){
+            ime = "Jugoistočna Srbija"
+          } else if(this.unlockedRegions[i] === "Backa"){
+            ime = "Bačka"
+          } else if(this.unlockedRegions[i] === "Kosovo"){
+            ime = "Kosovo i Metohija"
+          } else if(this.unlockedRegions[i] === "Raska"){
+            ime = "Raška"
+          } else if(this.unlockedRegions[i] === "Sumadija"){
+            ime = "Šumadija"
+          } else if(this.unlockedRegions[i] === "Istok"){
+            ime = "Istočna Srbija"
+          }
+          let element = document.getElementById(this.unlockedRegions[i] + "Grb");
+          element.setAttribute("title",ime);
           return pathToImage;
         }
       }

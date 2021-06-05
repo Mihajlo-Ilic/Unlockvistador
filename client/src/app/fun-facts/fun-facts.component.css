@@ -6,7 +6,7 @@
     width: 40%;
     height: 600px;
     width: 800px;
-    background-image: url('../../assets/images/unnamed.png');
+    /* background-image: url('../../assets/images/unnamed.png'); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -51,10 +51,11 @@
     text-shadow: 2px 2px black;
     background-position: center;
     background-size: cover;
+    background-color: black;
     border: 1px solid antiquewhite;
     width:75%;
     height: 70%;
-    opacity: 0.9;
+    opacity: 0.65;
     margin-bottom: 14px;
 }
 

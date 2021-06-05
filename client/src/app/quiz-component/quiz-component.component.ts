@@ -19,6 +19,7 @@ export class QuizComponentComponent implements OnInit {
   public displayAnswers: string[];
   public answersRemaining : number;
   public triesRemaining : number;
+  public regionNamePravo : string;
 
   constructor(private regionService : RegionService, private userService : UserService) {
     this.question = new Question("", "", "", "", "", "", "", "", "", "");
@@ -41,7 +42,21 @@ export class QuizComponentComponent implements OnInit {
     this.triesRemaining = 3;
     this.answersRemaining = 5;
     //dohvati pitanje; odaberi tacan odgovor i 3 nasumicna netacna
-    this.populateFields()
+    this.populateFields();
+    this.regionNamePravo = this.regionName
+    if(this.regionName === "Nisava"){
+      this.regionNamePravo = "Jugoistočna Srbija"
+    } else if(this.regionName === "Backa"){
+      this.regionNamePravo = "Bačka"
+    } else if(this.regionName === "Kosovo"){
+      this.regionNamePravo = "Kosovo i Metohija"
+    } else if(this.regionName === "Raska"){
+      this.regionNamePravo = "Raška"
+    } else if(this.regionName === "Sumadija"){
+      this.regionNamePravo = "Šumadija"
+    } else if(this.regionName === "Istok"){
+      this.regionNamePravo = "Istočna Srbija"
+    }
   }
 
   //Dodati neki osluskivac kada ova funkcija treba da se zove;

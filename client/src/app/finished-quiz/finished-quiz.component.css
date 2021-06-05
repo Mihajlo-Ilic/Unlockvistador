@@ -31,8 +31,9 @@
 }
 
 .exit-button:hover {
-  opacity: 1;
+  opacity: 0.6;
   position:center;
+  background-color: rgba(165, 34, 34, 0.5);
 }
 
 .content {

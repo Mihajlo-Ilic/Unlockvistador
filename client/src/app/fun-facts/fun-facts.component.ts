@@ -27,8 +27,21 @@ export class FunFactsComponent implements OnInit {
       this.regionPicture = e.picture;
       console.log(e.picture);
       let elem = document.getElementById("ui-grid");
-      //elem.setAttribute("style", "background-image: url('../../assets/images/region/" +  this.regionPicture +".jpg');");
+      elem.setAttribute("style", "background-image: url('../../assets/images/region/" +  this.regionPicture +".jpg');");
     });
+    if(this.regionName === "Nisava"){
+      this.regionName = "Jugoistočna Srbija"
+    } else if(this.regionName === "Backa"){
+      this.regionName = "Bačka"
+    } else if(this.regionName === "Kosovo"){
+      this.regionName = "Kosovo i Metohija"
+    } else if(this.regionName === "Raska"){
+      this.regionName = "Raška"
+    } else if(this.regionName === "Sumadija"){
+      this.regionName = "Šumadija"
+    } else if(this.regionName === "Istok"){
+      this.regionName = "Istočna Srbija"
+    }
   }
 
   close() : void {

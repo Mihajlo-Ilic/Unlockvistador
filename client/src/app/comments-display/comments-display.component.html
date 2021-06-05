@@ -3,12 +3,12 @@
       <div class="ui card">
         <div class="content">
           <button class="exit-button" type="" (click)="close()">Izlaz</button>
-          <a class="header">{{regionName}}</a>
+          <a class="header">{{regionNamePravo}}</a>
         </div>
       </div>
     </div>
     <div class="twelve wide column">
-      
+
 
       <form class="ui-form" [formGroup] = "checkForm" class = "card-body" (ngSubmit) = "sendComment(checkForm.value)">
       <button class="ui-button" type="submit">Dodajte komentar</button>
@@ -28,7 +28,7 @@
               <td>{{comment.comment}}</td>
             </tr>
           </tbody>
-            
+
         </table>
       </div>
     </div>

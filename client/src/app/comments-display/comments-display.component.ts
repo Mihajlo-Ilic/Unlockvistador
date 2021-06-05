@@ -17,8 +17,9 @@ export class CommentsDisplayComponent implements OnInit {
   @Input() localUserName: string;
   public comments : Comment[];
   public checkForm: FormGroup;
+  public regionNamePravo : string;
 
-  constructor(private httpClient: HttpClient, private fb: FormBuilder, private regionService : RegionService, private userService : UserService) { 
+  constructor(private httpClient: HttpClient, private fb: FormBuilder, private regionService : RegionService, private userService : UserService) {
     this.checkForm  = fb.group({
       commentInput : [' ', [Validators.required, Validators.pattern(".+")]]
     });
@@ -28,6 +29,20 @@ export class CommentsDisplayComponent implements OnInit {
   ngOnInit(): void {
     //dohvatiti komentare
       this.getComments();
+      this.regionNamePravo = this.regionName
+      if(this.regionName === "Nisava"){
+        this.regionNamePravo = "Jugoistočna Srbija"
+      } else if(this.regionName === "Backa"){
+        this.regionNamePravo = "Bačka"
+      } else if(this.regionName === "Kosovo"){
+        this.regionNamePravo = "Kosovo i Metohija"
+      } else if(this.regionName === "Raska"){
+        this.regionNamePravo = "Raška"
+      } else if(this.regionName === "Sumadija"){
+        this.regionNamePravo = "Šumadija"
+      } else if(this.regionName === "Istok"){
+        this.regionNamePravo = "Istočna Srbija"
+      }
   }
 
   @Output() closeEmitter = new EventEmitter<boolean>()
